@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hiberus_university/pages/EspaciosScreen.dart';
 import 'package:hiberus_university/pages/HomeScreen.dart';
 import 'package:hiberus_university/pages/SplashScreen.dart';
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomeScreen()
+      home: EspaciosScreen()
+      //HomeScreen()
     );
   }
 }
