@@ -51,6 +51,22 @@ class ImageMapExample extends State<EspaciosScreen> {
 
   }
 
+  Padding _createRowDescription (String image, String nameDescription, String text){
+    
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Image.asset("assets/images/${image}"),
+          SizedBox(width: 10,),
+          Text(nameDescription, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20),),
+          Text(text, style: TextStyle(fontSize: 18, color: Colors.black)),
+        ],
+      ),
+    );
+    
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -167,29 +183,56 @@ class ImageMapExample extends State<EspaciosScreen> {
                               color: Colors.white,
                               fontWeight: FontWeight.w600
                             ),)
-
                             ,
                           ),
                         ),
                       ),
 
 
-
                       //ListView
                       Flexible(
-                        fit: FlexFit.tight,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(selectedEspace?.description == null ? "Descripcion: " : "Descripción: " + selectedEspace!.description),
-                                  Text(selectedEspace?.spots == null ? "Plazas: " : "Plazas: " + selectedEspace!.spots.toString()),
-                                  Text(selectedEspace?.schedule == null ? "Horario: " : "Horario: " + selectedEspace!.schedule),
-                                ],
-                              ),
-                            ],
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    _createRowDescription(
+                                        "descripcion.png",
+                                        "Descripción: ",
+                                        selectedEspace?.description == null ? "" : selectedEspace!.description),
+
+                                    _createRowDescription(
+                                        "silla.png",
+                                        "Plazas: ",
+                                        selectedEspace?.spots == null ? "" : selectedEspace!.spots.toString()),
+
+                                    _createRowDescription(
+                                        "schedule.png",
+                                        "Horario: ",
+                                        selectedEspace?.schedule == null ? "" : selectedEspace!.schedule),
+                                    /*
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          Image.asset("assets/images/descripcion.png"),
+                                          SizedBox(width: 10,),
+                                          Text("Descripción: ", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20),),
+
+                                          selectedEspace?.description == null ? Text("") :
+                                          Text(selectedEspace!.description, style: TextStyle(fontSize: 18, color: Colors.black)),
+
+                                        ],
+                                      ),
+                                    ),
+
+                                    */
+                                  ],
+                                ),
+                              ],
+                            ),
                           )
                       )
                     ],
