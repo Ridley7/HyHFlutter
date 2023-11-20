@@ -27,6 +27,10 @@ class ImageMapExample extends State<EspaciosScreen> {
     0: Espacio(id: 0, name: "Sala 1", description: "Espacio 1", spots: 2, schedule: "9 AM - 5 PM", cornerTopLeft: Offset(41, 33), cornerBottomRight: Offset(183, 202), tapped: false, selectedColor: Color.fromRGBO(50, 200, 50, 0.5), unselectedColor: Color.fromRGBO(50, 50, 200, 0.5) ),
     1: Espacio(id: 1, name: "Sala 2", description: "Espacio 2", spots: 5, schedule: "10 AM - 5 PM", cornerTopLeft: Offset(183, 33), cornerBottomRight: Offset(272, 202), tapped: false, selectedColor: Color.fromRGBO(50, 200, 50, 0.5), unselectedColor: Color.fromRGBO(50, 50, 200, 0.5)),
     2: Espacio(id: 2, name: "Sala 3", description: "Espacio 3", spots: 5, schedule: "11 AM - 6 PM", cornerTopLeft: Offset(272, 33), cornerBottomRight: Offset(356, 202), tapped: false, selectedColor: Color.fromRGBO(50, 200, 50, 0.5), unselectedColor: Color.fromRGBO(50, 50, 200, 0.5)),
+    3: Espacio(id: 3, name: "Sala 4", description: "Espacio 4", spots: 5, schedule: "11 AM - 6 PM", cornerTopLeft: Offset(355, 33), cornerBottomRight: Offset(445, 202), tapped: false, selectedColor: Color.fromRGBO(50, 200, 50, 0.5), unselectedColor: Color.fromRGBO(50, 50, 200, 0.5)),
+    4: Espacio(id: 4, name: "Sala 5", description: "Espacio 5", spots: 5, schedule: "11 AM - 6 PM", cornerTopLeft: Offset(41, 290), cornerBottomRight: Offset(183, 438), tapped: false, selectedColor: Color.fromRGBO(50, 200, 50, 0.5), unselectedColor: Color.fromRGBO(50, 50, 200, 0.5)),
+    5: Espacio(id: 5, name: "Sala 6", description: "Espacio 6", spots: 5, schedule: "11 AM - 6 PM", cornerTopLeft: Offset(183, 290), cornerBottomRight: Offset(270, 438), tapped: false, selectedColor: Color.fromRGBO(50, 200, 50, 0.5), unselectedColor: Color.fromRGBO(50, 50, 200, 0.5)),
+    6: Espacio(id: 6, name: "Sala 7", description: "Espacio 7", spots: 5, schedule: "11 AM - 6 PM", cornerTopLeft: Offset(269, 290), cornerBottomRight: Offset(347, 438), tapped: false, selectedColor: Color.fromRGBO(50, 200, 50, 0.5), unselectedColor: Color.fromRGBO(50, 50, 200, 0.5)),
   };
 
   Espacio? selectedEspace;
