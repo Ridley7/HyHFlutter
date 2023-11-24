@@ -3,6 +3,7 @@ import 'package:hiberus_university/pages/ClasesHiberus.dart';
 import 'package:hiberus_university/pages/EspaciosScreen.dart';
 import 'package:hiberus_university/pages/HiberusScreen.dart';
 import 'package:hiberus_university/pages/HomeScreen.dart';
+import 'package:hiberus_university/pages/ListPokemon.dart';
 import 'package:hiberus_university/pages/SplashScreen.dart';
 
 void main() {
@@ -21,10 +22,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: //SplashScreen(),
-      //HiberusScreen(),
+      home: //ListPokemon()
+      //SplashScreen(),
+      HiberusScreen(),
       //ClasesHiberus()
-      EspaciosScreen()
+      //EspaciosScreen()
       //HomeScreen()
     );
   }
