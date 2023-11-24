@@ -13,6 +13,13 @@ class HiberusScreen extends StatefulWidget {
 class _HiberusScreenState extends State<HiberusScreen> {
 
   PageController _pageController = PageController();
+  TextEditingController _controllerName = TextEditingController();
+  TextEditingController _controllerEmailCompany = TextEditingController();
+  TextEditingController _controllerTelephone = TextEditingController();
+  TextEditingController _controllerCompany = TextEditingController();
+  TextEditingController _controllerMessage = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -219,22 +226,213 @@ class _HiberusScreenState extends State<HiberusScreen> {
               ),
 
               SafeArea(
-                child: Container(
-                  child: Column(
-                    children: [
-                      Text("¿TE INTERESA?", style: GoogleFonts.montserrat(
-                          color: Color(0xFF133963),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 36
-                      ),),
-                      SizedBox(height: 20,),
-                      Text("Si quieres descubrir más sobre la Hiberus University o más información sobre los programas formativos, déjanos tus datos y nos pondremos en contacto contigo.",
-                      style: TextStyle(
-                        fontSize: 17
-                      ),
-                        textAlign: TextAlign.center,
-                      )
-                    ],
+                child: SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Text("¿TE INTERESA?", style: GoogleFonts.montserrat(
+                            color: Color(0xFF133963),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 36
+                        ),),
+                        const SizedBox(height: 20,),
+                        const Text("Si quieres descubrir más sobre la Hiberus University o más información sobre los programas formativos, déjanos tus datos y nos pondremos en contacto contigo.",
+                        style: TextStyle(
+                          fontSize: 17
+                        ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Form(
+                            key: _formKey,
+                              child: Column(
+                                children: [
+                  
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                  child: TextFormField(
+                                  controller: _controllerName,
+                                  decoration: InputDecoration(
+                                  hintText: "Nombre*",
+                                  enabledBorder: const OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(2)),
+                                  borderSide: BorderSide(color: Colors.black54),
+                                  ),
+                                  ),
+                  
+                                  validator: (value){
+                                  if(value!.isEmpty){
+                                  return "Campo obligatorio";
+                                  }
+                                  return null;
+                                  },
+                                                              ),
+                                ),
+                  
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                    child: TextFormField(
+                                      controller: _controllerEmailCompany,
+                                      decoration: InputDecoration(
+                                        hintText: "Emil de empresa*",
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(2)),
+                                          borderSide: BorderSide(color: Colors.black54),
+                                        ),
+                                      ),
+                  
+                                      validator: (value){
+                                        if(value!.isEmpty){
+                                          return "Campo obligatorio";
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                  ),
+                  
+                  
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                    child: TextFormField(
+                                      controller: _controllerTelephone,
+                                      decoration: InputDecoration(
+                                        hintText: "Teléfono",
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(2)),
+                                          borderSide: BorderSide(color: Colors.black54),
+                                        ),
+                                      ),
+                  
+                                    ),
+                                  ),
+                  
+                  
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                    child: TextFormField(
+                                      controller: _controllerCompany,
+                                      decoration: InputDecoration(
+                                        hintText: "Compañia*",
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(2)),
+                                          borderSide: BorderSide(color: Colors.black54),
+                                        ),
+                                      ),
+                  
+                                      validator: (value){
+                                        if(value!.isEmpty){
+                                          return "Campo obligatorio";
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                  ),
+                  
+                  
+                  
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                    child: TextFormField(
+                                      controller: _controllerMessage,
+                                      decoration: InputDecoration(
+                                        hintText: "\t\tMensaje",
+                                        contentPadding: EdgeInsets.symmetric(vertical: 50.0),
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(2)),
+                                          borderSide: BorderSide(color: Colors.black54),
+                                        ),
+                                      ),
+                  
+                                      validator: (value){
+                                        if(value!.isEmpty){
+                                          return "Campo obligatorio";
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                  ),
+
+                                  Padding(
+                                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                                    child: Row(
+                                      children: [
+                                        Checkbox(
+                                            value: false,
+                                            onChanged: (bool? value){
+
+                                            }
+                                        ),
+
+                                        Flexible(
+                                            child: Text(
+                                                "Me gustaría recibir comunicaciones de marketing de Hiberus y sobre sus productos, servicios y eventos.",
+                                            style: TextStyle(fontSize: 12),))
+                                      ],
+                                    ),
+                                  ),
+
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                                    child: Row(
+                                      children: [
+                                        Checkbox(
+                                            value: false,
+                                            onChanged: (bool? value){
+                                            }
+                                        ),
+
+                                        Flexible(
+                                            child: RichText(
+                                        text: TextSpan(
+                                          children: [
+                                            TextSpan(
+                                              text: "Acepto el aviso legal y la politica de privacidad",
+                                              style:TextStyle(fontSize: 14, color: Colors.black)
+                                            ),
+                                            TextSpan(
+                                                text: "*",
+                                                style:TextStyle(fontSize: 14, color: Colors.red)
+                                            )
+                                          ]
+                                        )
+                                        )
+                                        )
+                                      ],
+                                    ),
+                                  ),
+
+                                  Padding(
+                                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                                    child: SizedBox(
+                                      width: MediaQuery.of(context).size.width * 0.8,
+                                      height: MediaQuery.of(context).size.height * 0.1,
+                                      child: ElevatedButton(
+                                        onPressed: (){
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.orange,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(10.0)
+                                            )
+                                        ),
+                                        child: const Text("Recibir más información",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 22
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                  
+                  
+                                ],
+                              )
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               )
