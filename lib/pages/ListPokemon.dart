@@ -81,6 +81,16 @@ class _ListPokemonState extends State<ListPokemon> {
 
   //Boleano que controla nuestro switch
   bool _switchValue = false;
+  bool _switchForm = true;
+
+  //Controladores de inputs
+  TextEditingController _controllerPokemonName = TextEditingController();
+  TextEditingController _controllerPokemonType = TextEditingController();
+  TextEditingController _controllerPokemonDescription = TextEditingController();
+  TextEditingController _controllerPokemonHeight = TextEditingController();
+  TextEditingController _controllerPokemonWeight = TextEditingController();
+  TextEditingController _controllerPokemonImage = TextEditingController();
+  final GlobalKey<FormState> _formAddPokemonKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +99,16 @@ class _ListPokemonState extends State<ListPokemon> {
       appBar: AppBar(
         title: const Text("Lista de Pokemons", style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.transparent,
+        actions: [
+          GestureDetector(
+            child: Icon(Icons.add),
+            onTap: (){
+              setState(() {
+                _switchForm = !_switchForm;
+              });
+            },
+          )
+        ],
         centerTitle: true,
       ),
       body: Container(
@@ -104,7 +124,144 @@ class _ListPokemonState extends State<ListPokemon> {
           //Aplicamos un padding de 90 para que el switch y el texto que le acompaña queden por debajo de la appbar.
           //Es posible que esto se puede hacer mejor
           padding: const EdgeInsets.only(top: 90),
-          child: Column(
+          child: _switchForm
+              ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Column(
+                  children: [
+                //Titulo
+                const Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all( 8.0,),
+                      child: Text("Rellena el formulario para continuar", style: TextStyle(color: Colors.white),),
+                    ),
+                  ],
+                ),
+
+                //Formulario
+                Flexible(
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: _formAddPokemonKey,
+                      child: Column(
+
+                        children: [
+
+                          //Campo nombre
+                          PokeTextFormField(
+                              controllerPokemonName: _controllerPokemonName,
+                            pokeHintText: "Escriba el nombre del Pokemon",
+                            pokeLabelText: "Nombre",
+                            mandatoryField: true,
+                          ),
+
+                          //Campo Tipo
+                          PokeTextFormField(
+                            controllerPokemonName: _controllerPokemonType,
+                            pokeHintText: "Escriba el tipo del Pokemon",
+                            pokeLabelText: "Tipo",
+                            mandatoryField: true,
+                          ),
+
+
+                          //Campo descripcion
+                          PokeTextFormField(
+                            controllerPokemonName: _controllerPokemonDescription,
+                            pokeHintText: "Escriba la descripcion del Pokemon",
+                            pokeLabelText: "Descripcion",
+                            mandatoryField: true,
+                          ),
+
+                          //Campo altura
+                          PokeTextFormField(
+                            controllerPokemonName: _controllerPokemonHeight,
+                            pokeHintText: "Escriba la altura del Pokemon",
+                            pokeLabelText: "Altura",
+                            mandatoryField: false,
+                          ),
+
+                          //Campo peso
+                          PokeTextFormField(
+                            controllerPokemonName: _controllerPokemonWeight,
+                            pokeHintText: "Escriba el peso del Pokemon",
+                            pokeLabelText: "Peso",
+                            mandatoryField: false,
+                          ),
+
+                          //Campo imagen
+                          PokeTextFormField(
+                            controllerPokemonName: _controllerPokemonImage,
+                            pokeHintText: "Escriba el numero del Pokemon",
+                            pokeLabelText: "Numero imagen",
+                            mandatoryField: true,
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.08,
+                              child: ElevatedButton(
+                                  onPressed: (){
+
+                                    if(_formAddPokemonKey.currentState!.validate()){
+                                      //Añadimos un pokemon
+                                      Random random = Random();
+                                      int randomIndex = random.nextInt(149);
+
+                                      print("Tenemos que añadir pokemon");
+                                      Pokemon newPokemon = Pokemon(
+                                          name: _controllerPokemonName.text,
+                                          description: _controllerPokemonDescription.text,
+                                          urlImage: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/100.png",
+                                          type: _controllerPokemonType.text,
+                                        height: _controllerPokemonHeight.text,
+                                          weight: _controllerPokemonWeight.text
+                                      );
+
+                                      pokemonList.add(newPokemon);
+
+                                      //Quitamos el formulario
+                                      _switchForm = !_switchForm;
+                                      //Activamos Lista de pokemon
+                                      _switchValue = true;
+                                      setState(() {
+
+                                      });
+
+
+                                    }else{
+                                      print("ERROR");
+                                    }
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.blueAccent,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(25.0)
+                                    )
+                                  ),
+                                  child: const Text(
+                                    "Enviar",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16
+                                    ),
+                                  )
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+                            ],
+                          ),
+              )
+
+
+              : Column(
             children: [
               //Definimos el switch y su leyenda
               Row(
@@ -141,6 +298,53 @@ class _ListPokemonState extends State<ListPokemon> {
           setState(() {});
         },
         child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class PokeTextFormField extends StatelessWidget {
+  const PokeTextFormField({
+    super.key,
+    required TextEditingController controllerPokemonName,
+    required this.pokeHintText,
+    required this.pokeLabelText,
+    required this.mandatoryField
+  }) : _controllerPokemonName = controllerPokemonName;
+
+  final TextEditingController _controllerPokemonName;
+  final String pokeHintText;
+  final String pokeLabelText;
+  final bool? mandatoryField;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: TextFormField(
+        controller: _controllerPokemonName,
+        decoration: InputDecoration(
+            hintText: pokeHintText,
+            labelText: pokeLabelText,
+
+            enabledBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderSide: BorderSide(color: Colors.black),
+            ),
+        ),
+
+        validator: (value){
+
+          if(mandatoryField!){
+            if(value!.isEmpty){
+              return "Campo obligatorio";
+            }
+            return null;
+          }else{
+            return null;
+          }
+
+        },
       ),
     );
   }
