@@ -11,6 +11,7 @@ import 'package:hiberus_university/pages/LecturersScreen.dart';
 import 'package:hiberus_university/pages/ListPokemon.dart';
 import 'package:hiberus_university/pages/SplashScreen.dart';
 import 'package:hiberus_university/pages/schedule_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,9 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Hiberus University',
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+        ],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
