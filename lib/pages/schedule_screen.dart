@@ -12,7 +12,6 @@ class ScheduleScreen extends StatefulWidget {
 
 class _ScheduleScreenState extends State<ScheduleScreen>{
 
-  CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.utc(2023, 12, 6);
   DateTime? _selectedDay;
   Map<DateTime, List<Event>> events = {
@@ -54,11 +53,26 @@ class _ScheduleScreenState extends State<ScheduleScreen>{
                 focusedDay: _focusedDay,
                 firstDay: DateTime.utc(2023, 9, 1),
                 lastDay: DateTime.utc(2024, 1, 30),
+              locale: "es_ES",
+              calendarFormat: CalendarFormat.month,
+              startingDayOfWeek: StartingDayOfWeek.monday,
               selectedDayPredicate: (day){
                   return isSameDay(_selectedDay, day);
               },
               onDaySelected: _onDaySelected,
               eventLoader: _getEventsForDay,
+              calendarStyle: CalendarStyle(
+                  outsideDaysVisible: false,
+                  weekendTextStyle: TextStyle().copyWith(color: Colors.blue[800]),
+                  holidayTextStyle: TextStyle().copyWith(color: Colors.blue[800])
+              ),
+
+              headerStyle: const HeaderStyle(
+                  titleCentered: true,
+                  formatButtonVisible: false
+              ),
+
+
             ),
             const SizedBox(
               height: 8.0,
