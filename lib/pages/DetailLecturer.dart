@@ -27,7 +27,7 @@ class DetailLecturer extends StatelessWidget {
           children: [
             //Fondo superior
             Container(
-              margin: EdgeInsets.only(bottom: bottom),
+              margin: const EdgeInsets.only(bottom: bottom),
               child: Stack(
                 clipBehavior: Clip.none,
                 alignment: Alignment.center,

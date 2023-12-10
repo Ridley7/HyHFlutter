@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ScheduleScreen()
+      home: //ScheduleScreen()
       //HomePage()
       //DetailLecturer(),
       //LecturersScreen(),
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       //HiberusScreen(),
       //ClasesHiberus()
       //EspaciosScreen()
-      //HomeScreen()
+      HomeScreen()
 
       //DetailPokemon()
       //ListPokemon()

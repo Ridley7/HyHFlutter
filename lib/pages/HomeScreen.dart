@@ -1,6 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:hiberus_university/pages/EspaciosScreen.dart';
+import 'package:hiberus_university/pages/HiberusScreen.dart';
+import 'package:hiberus_university/pages/LecturersScreen.dart';
+import 'package:hiberus_university/pages/schedule_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,7 +29,11 @@ class HomeScreen extends StatelessWidget {
                       imageBackground: "https://cdn.pixabay.com/photo/2023/10/28/18/02/songbird-8348139_1280.png",
                       labelSection: "Hiberus",
                       callback: (){
-                        print("Hiberus");
+                        Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const HiberusScreen()
+                            )
+                        );
                       },
                     width: size.width / 2,
                   )
@@ -39,7 +47,11 @@ class HomeScreen extends StatelessWidget {
                       imageBackground: "https://cdn.pixabay.com/photo/2023/10/28/18/02/songbird-8348139_1280.png",
                       labelSection: "Espacios",
                       callback: (){
-                        print("Hola desde espacio");
+                        Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const EspaciosScreen()
+                            )
+                        );
                       },
                     width: size.width / 2,
                     leftLabel: null,
@@ -54,7 +66,11 @@ class HomeScreen extends StatelessWidget {
                       imageBackground: "https://cdn.pixabay.com/photo/2023/09/22/07/02/red-8268266_1280.jpg",
                       labelSection: "Profesores",
                       callback: (){
-                        print("Click profesores");
+                        Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const LecturersScreen()
+                            )
+                        );
                       },
                     width: size.width / 2,
                   )
@@ -68,7 +84,11 @@ class HomeScreen extends StatelessWidget {
                       imageBackground: "https://cdn.pixabay.com/photo/2023/09/14/15/48/woman-8253239_1280.jpg",
                       labelSection: "Horarios",
                       callback: (){
-                        print("Horarios");
+                        Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const ScheduleScreen()
+                            )
+                        );
                       },
                     width: size.width / 2,
                     leftLabel: null,
