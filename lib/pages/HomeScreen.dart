@@ -4,6 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hiberus_university/pages/EspaciosScreen.dart';
 import 'package:hiberus_university/pages/HiberusScreen.dart';
 import 'package:hiberus_university/pages/LecturersScreen.dart';
+import 'package:hiberus_university/pages/program_screen.dart';
 import 'package:hiberus_university/pages/schedule_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -104,7 +105,11 @@ class HomeScreen extends StatelessWidget {
                       imageBackground: "https://cdn.pixabay.com/photo/2023/10/27/10/49/australian-king-parrot-8345064_1280.jpg",
                       labelSection: "Programa",
                     callback: () {
-                        print("Hola desde programa");
+                      Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const ProgramScreen()
+                          )
+                      );
                     },
                   )
               )
