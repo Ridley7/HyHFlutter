@@ -7,56 +7,25 @@ class ProgramScreen extends StatefulWidget {
   State<ProgramScreen> createState() => _ProgramScreenState();
 }
 
-class _ProgramScreenState extends State<ProgramScreen> {
-  final List<Item> _data = List<Item>.generate(
-  10,
-          (int index) {
-    return Item(
-      headerText: 'Item $index',
-      expandedText: 'This is item number $index'
-    );
-          }
-  );
+class _ProgramScreenState extends State<ProgramScreen>{
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ExpansionPanelList(
-        expansionCallback: (int index, bool isExpanded){
-          setState(() {
-            _data[index].isExpanded = isExpanded;
-          });
-        },
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child:
+          Column(
+            children: temario.map((e) {
 
-        children: _data.map<ExpansionPanel>((Item item){
-          return ExpansionPanel(
-            canTapOnHeader: true,
-              headerBuilder: (BuildContext context, bool isExpanded){
-                return buildImageCard();
-                  //buildBasicCard();
-                /*
-                return ListTile(
-                  title: Text(item.headerText + " dfdf"),
-                );
+              return ExpandibleCard(
+                titleModule: e.tituloModulo,
+                listaCapitulos: e.listaCapitulo,
+              );
+            }).toList(),
 
-                 */
-              },
-              body: ListTile(
-                title: Text(item.expandedText),
-                subtitle: const Text('To delete this item, click trash icon'),
-                trailing: const Icon(
-                  Icons.delete,
-                  color: Colors.orangeAccent,
-                ),
-                onTap: (){
-                  //Hago cosas
-
-                },
-              ),
-            isExpanded: item.isExpanded
-          );
-        }).toList(),
-
+          ),
+        ),
       ),
     );
   }
@@ -134,6 +103,258 @@ class _ProgramScreenState extends State<ProgramScreen> {
   );
 }
 
+class ExpandibleCard extends StatefulWidget{
+  ExpandibleCard({
+    Key? key,
+    required this.titleModule,
+    required this.listaCapitulos
+  }):super(key:key);
+
+  String titleModule;
+  List<Capitulo> listaCapitulos;
+
+
+  @override
+  State<ExpandibleCard> createState() => _ExpandibleCardState();
+}
+
+class _ExpandibleCardState extends State<ExpandibleCard> with TickerProviderStateMixin{
+
+  late final AnimationController _controller;
+
+  //animation que genera un valor dependiendo del tween aplicado
+  late final Animation<double> _animation;
+
+  //definimos valor de inicio y final de la animacion
+  late final Tween<double> _sizeTween;
+
+  // expansion state
+  bool _isExpanded = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    _controller = AnimationController(
+        vsync: this,
+        duration: const Duration(milliseconds: 150)
+    );
+
+    _animation = CurvedAnimation(
+        parent: _controller,
+        curve: Curves.fastOutSlowIn
+    );
+
+    _sizeTween = Tween(begin: 0, end: 1);
+    super.initState();
+  }
+
+  void _expandOnChanged() {
+    _isExpanded = !_isExpanded;
+    _isExpanded ? _controller.forward() : _controller.reverse();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Wrap(
+      children: [
+        HeaderCard(callback: _expandOnChanged),
+        ContentCard(
+            sizeTween: _sizeTween,
+            animation: _animation,
+          titleModule: widget.titleModule,
+          capitulos: widget.listaCapitulos,
+        ),
+
+
+      ],
+    );
+  }
+}
+
+class ContentCard extends StatelessWidget {
+  const ContentCard({
+    super.key,
+    required Tween<double> sizeTween,
+    required Animation<double> animation,
+    required String titleModule,
+    required List<Capitulo> capitulos,
+  }) : _sizeTween = sizeTween, _animation = animation, titleModule = titleModule, _listaCapitulos = capitulos;
+
+  final Tween<double> _sizeTween;
+  final Animation<double> _animation;
+  final String titleModule;
+  final List<Capitulo> _listaCapitulos;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizeTransition(
+              sizeFactor: _sizeTween.animate(_animation),
+              child: AnimatedContainer(
+                width: double.infinity,
+                duration: const Duration(milliseconds: 150),
+                color: Colors.amber,
+                alignment: Alignment.center,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: _listaCapitulos.map((e) {
+                    return Column(
+                      children: [
+                        Text(titleModule),
+                        Column(
+                          children: [
+                            Text(e.texto),
+                            Column(
+                              children: e.listaSubcapitulos!.map((subcapitulo) {
+                                return Column(
+                                  children: [
+                                    Text(subcapitulo.text),
+                                    subcapitulo.listaEpisodios == null
+                                        ? Container() :
+                                    Column(
+                                      children: subcapitulo.listaEpisodios!.map((episodio) {
+                                        return Text(episodio.text);
+                                      }).toList(),
+                                    )
+                                  ],
+                                );
+                              }).toList()
+                            )
+                          ],
+                        )
+                      ],
+                    );
+                  }).toList()
+
+                      /*
+                  [
+                    TitleModule(title: "Modulo 1 - Desarrollo para la plataforma Android"),
+                    TitleChapter(text: "1.\t Capítulo 1.1: Introducción al lenguajo de programación Kotlin.",),
+                    TitleSubchapter(text: "a.\t Principales aspectos del lenguaje de programación Kotlin.",),
+                    Episode(text: "i.\t StackView")
+                  ],
+
+                  */
+                )
+              ),
+            );
+  }
+}
+
+class ModuleWidget extends StatelessWidget {
+  const ModuleWidget({
+    super.key,
+    required this.listaCapitulos
+  });
+
+  final List<Capitulo> listaCapitulos;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "titleModule",
+      style: const TextStyle(
+          fontSize: 20,
+          color: Colors.lightBlueAccent
+      ),);
+  }
+}
+
+class Episode extends StatelessWidget {
+  const Episode({
+    super.key,
+    required this.text
+  });
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 64.0),
+      child: Text(text),
+    );
+  }
+}
+
+class TitleSubchapter extends StatelessWidget {
+  const TitleSubchapter({
+    super.key,
+    required this.text
+  });
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16.0),
+      child: Text(text),
+    );
+  }
+}
+
+class TitleChapter extends StatelessWidget {
+  const TitleChapter({
+    super.key,
+    required this.text
+  });
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: Text(text, style:
+      const TextStyle(
+        fontSize: 16,
+        color: Color(0xFF133963)
+      ),),
+    );
+  }
+}
+
+
+
+
+class HeaderCard extends StatelessWidget{
+  const HeaderCard({
+    Key? key,
+    required this.callback
+  }):super(key:key);
+
+  final VoidCallback callback;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return GestureDetector(
+        onTap: callback,
+        child: Container(
+            color: Colors.transparent,
+            width: double.infinity,
+            alignment: Alignment.center,
+            child: Ink.image(
+              image: const NetworkImage(
+                "https://cdn.pixabay.com/photo/2023/12/09/15/04/dog-8439530_1280.jpg",
+              ),
+              fit: BoxFit.cover,
+              height: 240,
+            )
+        )
+    );
+  }
+}
+
 class WordOfTheDayWidget extends StatelessWidget{
   final List<String> splitWords;
   final String type;
@@ -195,6 +416,79 @@ class Filters{
     0.22126, 0.7152, 0.0722, 0, 0,
     0, 0, 0, 1, 0
   ]);
+}
+
+List<Modulo> temario = [
+  Modulo(
+      tituloModulo: "Modulo 1 - DEsarrollo para la plataforma Android",
+      listaCapitulo:
+      [
+        Capitulo(
+            texto: "1. Capitulo 1.1: Introducción al lenguaje de programación Kotlin",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Principales aspectos del lenguaje de prorgamación Kotlin",
+                  listaEpisodios: []
+              )
+            ]
+        ),
+        ]
+  ),
+
+  Modulo(
+      tituloModulo: "Modulo 2 - Desarrollo para la plataforma de iOS",
+      listaCapitulo:
+      [
+        Capitulo(
+            texto: "1. Capitulo 1.1: Introducción al lenguaje de programación Swift",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Principales aspectos del lenguaje de programación Swift",
+                  listaEpisodios: []
+              )
+            ]
+        ),
+      ]
+  ),
+
+];
+
+class Modulo{
+  String tituloModulo;
+  List<Capitulo> listaCapitulo;
+
+  Modulo({
+    required this.tituloModulo,
+    required this.listaCapitulo
+  });
+}
+
+class Capitulo{
+  String texto;
+  List<Subcapitulo>? listaSubcapitulos;
+
+  Capitulo({
+    required this.texto,
+    required this.listaSubcapitulos
+  });
+}
+
+class Subcapitulo{
+  Subcapitulo({
+    required this.text,
+    required this.listaEpisodios
+  });
+
+  String text;
+  List<Episode>? listaEpisodios;
+}
+
+class Episodio{
+  Episodio({
+    required this.text
+  });
+
+  String text;
 }
 
 class Item{
