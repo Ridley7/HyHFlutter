@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -122,10 +123,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>{
 
             Text(
               "CALENDARIO",
-              style: GoogleFonts.montserrat(
-                  color: Color(0xFF133963),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 36),
+              style: ConstantsApp.TittleApp
             ),
 
             TableCalendar(

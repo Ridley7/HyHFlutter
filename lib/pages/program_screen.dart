@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:hiberus_university/constants/constants_app.dart';
 
 class ProgramScreen extends StatefulWidget {
   const ProgramScreen({super.key});
@@ -17,16 +18,25 @@ class _ProgramScreenState extends State<ProgramScreen>{
         child: SingleChildScrollView(
           child:
           Column(
-            children: temario.map((e) {
+            children: [
+              Text(
+                  "TEMARIO",
+                  style: ConstantsApp.TittleApp
+              ),
+              
+              Column(
+                children: temario.map((e) {
 
-              return ExpandibleCard(
-                titleModule: e.tituloModulo,
-                listaCapitulos: e.listaCapitulo,
-                nameTechnology: e.nameTechnology,
-                imageTechnology: e.imageTechnology,
-              );
-            }).toList(),
+                  return ExpandibleCard(
+                    titleModule: e.tituloModulo,
+                    listaCapitulos: e.listaCapitulo,
+                    nameTechnology: e.nameTechnology,
+                    imageTechnology: e.imageTechnology,
+                  );
+                }).toList(),
 
+              ),
+            ],
           ),
         ),
       ),
@@ -139,45 +149,65 @@ class ContentCard extends StatelessWidget {
               child: AnimatedContainer(
                 width: double.infinity,
                 duration: const Duration(milliseconds: 150),
-                color: Colors.amber,
+
                 alignment: Alignment.center,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        Text(titleModule)
+                        Expanded(
+                          child: Text(titleModule,
+                              style: ConstantsApp.TitleModule
+                          ),
+                        ),
                       ],
                     ),
 
                     Column(
-                      children: _listaCapitulos.map((e) {
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: _listaCapitulos.map((chapter) {
                         return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Column(
-                              children: [
-                                Text(e.texto),
-                                e.listaSubcapitulos == null
-                                    ? Container()
-                                    : Column(
-                                  children:
-                                    e.listaSubcapitulos!.map((subcapitulo) {
-                                      return Column(
-                                        children: [
-                                          Text(subcapitulo.text),
-                                          subcapitulo.listaEpisodios == null
-                                          ? Container() :
-                                              Column(
-                                                children: subcapitulo.listaEpisodios!.map((episode) {
-                                                  return Text(episode.text);
-                                                }).toList(),
-                                              )
-                                        ],
-                                      );
-                                    }).toList()
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(chapter.texto,
+                                  style: ConstantsApp.ChapterModule,),
+                                  chapter.listaSubcapitulos == null
+                                      ? Container()
+                                      : Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children:
+                                      chapter.listaSubcapitulos!.map((subchapter) {
+                                        return Padding(
+                                          padding: const EdgeInsets.only(left: 8.0),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(subchapter.text, style: ConstantsApp.SubchapterModule,),
+                                              subchapter.listaEpisodios == null
+                                              ? Container() :
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left: 8.0),
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: subchapter.listaEpisodios!.map((episode) {
+                                                        return Text(episode.text, style: ConstantsApp.EpisodeModule,);
+                                                      }).toList(),
+                                                    ),
+                                                  )
+                                            ],
+                                          ),
+                                        );
+                                      }).toList()
 
-                                )
-                              ],
+                                  )
+                                ],
+                              ),
                             )
                           ],
                         );
@@ -185,20 +215,30 @@ class ContentCard extends StatelessWidget {
                     )
                   ]
 
-                      /*
-                  [
-                    TitleModule(title: "Modulo 1 - Desarrollo para la plataforma Android"),
-                    TitleChapter(text: "1.\t Capítulo 1.1: Introducción al lenguajo de programación Kotlin.",),
-                    TitleSubchapter(text: "a.\t Principales aspectos del lenguaje de programación Kotlin.",),
-                    Episode(text: "i.\t StackView")
-                  ],
-
-                  */
                 )
               ),
             );
   }
 }
+
+class EpisodeWidget extends StatelessWidget {
+  const EpisodeWidget({
+    super.key,
+    required this.text
+  });
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 64.0),
+      child: Text(text),
+    );
+  }
+}
+
+
 
 class ModuleWidget extends StatelessWidget {
   const ModuleWidget({
@@ -219,22 +259,6 @@ class ModuleWidget extends StatelessWidget {
   }
 }
 
-class Episode extends StatelessWidget {
-  const Episode({
-    super.key,
-    required this.text
-  });
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 64.0),
-      child: Text(text),
-    );
-  }
-}
 
 class TitleSubchapter extends StatelessWidget {
   const TitleSubchapter({
@@ -305,7 +329,7 @@ class HeaderCard extends StatelessWidget{
                 imageBackground
               ),
             height: 240,
-            fit: BoxFit.cover,
+            fit: BoxFit.fitWidth,
             child: InkWell(
               onTap: callback
             ),
@@ -333,6 +357,20 @@ class Filters{
     0.22126, 0.7152, 0.0722, 0, 0,
     0, 0, 0, 1, 0
   ]);
+}
+
+class Modulo{
+  String tituloModulo;
+  List<Capitulo> listaCapitulo;
+  String nameTechnology;
+  String imageTechnology;
+
+  Modulo({
+    required this.tituloModulo,
+    required this.listaCapitulo,
+    required this.nameTechnology,
+    required this.imageTechnology
+  });
 }
 
 List<Modulo> temario = [
@@ -396,11 +434,11 @@ List<Modulo> temario = [
               Subcapitulo(
                   text: "b. Conexión entre vistas y código",
                   listaEpisodios: [
-                    const Episode(
+                    Episodio(
                         text: "i. findViewById"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "ii. View Binding"
                     ),
                   ]
@@ -602,23 +640,23 @@ List<Modulo> temario = [
               Subcapitulo(
                   text: "d. Vistas y AutoLayout",
                   listaEpisodios: [
-                    const Episode(
+                    Episodio(
                         text: "i. StackView"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "ii. Button"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "iii. TextField"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "iv. ScrollView"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "v. TableView y CollectionView"
                     ),
                   ]
@@ -675,27 +713,27 @@ List<Modulo> temario = [
               Subcapitulo(
                   text: "a. Consumo de API Rest",
                   listaEpisodios: [
-                    const Episode(
+                    Episodio(
                         text: "i. URLSession"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "ii. Codable"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "iii. Throw"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "iv. Async y Await"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "v. TableView y Combine"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "vi. Closure y Result"
                     ),
                   ]
@@ -714,15 +752,15 @@ List<Modulo> temario = [
               Subcapitulo(
                   text: "d. Consumo de datos en local",
                   listaEpisodios: [
-                    const Episode(
+                    Episodio(
                         text: "i. UserDefaults"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "ii. KeyChain"
                     ),
 
-                    const Episode(
+                    Episodio(
                         text: "iii. Core Data"
                     ),
                   ]
@@ -763,21 +801,187 @@ List<Modulo> temario = [
     imageTechnology: "https://cdn.pixabay.com/photo/2022/09/18/18/40/apple-logo-7463795_1280.png"
   ),
 
+  Modulo(
+      tituloModulo: "Modulo 3 - Desarrollo multiplataforma en Flutter",
+      listaCapitulo: [
+        Capitulo(
+            texto: "1. Capitulo 1.1: Introducción al lenguaje de programación Dart.",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Principales aspectos del lenguaje de programación Dart",
+                  listaEpisodios: []
+              )
+            ]
+        ),
+
+        Capitulo(
+            texto: "2. Capitulo 1.2: Entorno de desarrollo y anatomia de una aplicación Flutter",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Android Studio y Visual Studio Code",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "b. Estructura de proyecto",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "c. Recursos",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "d. Localización",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "e. Librerías",
+                  listaEpisodios: []
+              ),
+            ]
+        ),
+
+        Capitulo(
+            texto: "3. Capitulo 1.3: Diseño de interfaces: Widgets y componentes",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Componentes básicos de interfaz",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "b. Tipos de Widget",
+                  listaEpisodios: [
+                    Episodio(text: "i. Stateful"),
+                    Episodio(text: "ii. Stateless"),
+                  ]
+              ),
+
+              Subcapitulo(
+                  text: "c. Desarrollo basado en componentes",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "d. Mi primera aplicación Android",
+                  listaEpisodios: []
+              ),
+            ]
+        ),
+
+        Capitulo(
+            texto: "4. Capitulo 1.4: Navegación",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Navigator",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "b. Tipos de GO Router",
+                  listaEpisodios: []
+              ),
+            ]
+        ),
+
+        Capitulo(
+            texto: "5. Capitulo 1.5: Conexión con API Rest",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Dio",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "b. Autenticación",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "c. Interceptores",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "d. Proyecto de ejemplo",
+                  listaEpisodios: []
+              ),
+            ]
+        ),
+
+        Capitulo(
+            texto: "6. Capitulo 1.6: Concurrencia y gestión de estados",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Async y Await",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "b. Future",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "c. Streams",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "d. setState",
+                  listaEpisodios: []
+              ),
+            ]
+        ),
+
+        Capitulo(
+            texto: "7. Capitulo 1.7: Persistencia de datos",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Shared Preferences",
+                  listaEpisodios: []
+              ),
+
+              Subcapitulo(
+                  text: "b. SQFlite",
+                  listaEpisodios: []
+              ),
+            ]
+        ),
+
+        Capitulo(
+            texto: "8. Capitulo 1.8: Arquitectura de una aplicación Flutter",
+            listaSubcapitulos: []
+        ),
+
+        Capitulo(
+            texto: "9. Capitulo 1.9: Introducción a testing",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Testing unitario en Flutter",
+                  listaEpisodios: []
+              ),
+            ]
+        ),
+
+        Capitulo(
+            texto: "10. Capitulo 1.10: Proyecto final Flutter",
+            listaSubcapitulos: [
+              Subcapitulo(
+                  text: "a. Desarrollo de proyecto final por el alumno en el que ponga en práctica todos los conocimientos aprendidos",
+                  listaEpisodios: []
+              ),
+            ]
+        ),
+      ],
+      nameTechnology: "",
+      imageTechnology: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Google-flutter-logo.svg/1920px-Google-flutter-logo.svg.png"
+  )
+
 ];
-
-class Modulo{
-  String tituloModulo;
-  List<Capitulo> listaCapitulo;
-  String nameTechnology;
-  String imageTechnology;
-
-  Modulo({
-    required this.tituloModulo,
-    required this.listaCapitulo,
-    required this.nameTechnology,
-    required this.imageTechnology
-  });
-}
 
 class Capitulo{
   String texto;
@@ -796,7 +1000,7 @@ class Subcapitulo{
   });
 
   String text;
-  List<Episode>? listaEpisodios;
+  List<Episodio>? listaEpisodios;
 }
 
 class Episodio{
