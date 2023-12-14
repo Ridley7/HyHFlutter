@@ -167,50 +167,7 @@ class ContentCard extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: _listaCapitulos.map((chapter) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(chapter.texto,
-                                  style: ConstantsApp.ChapterModule,),
-                                  chapter.listaSubcapitulos == null
-                                      ? Container()
-                                      : Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children:
-                                      chapter.listaSubcapitulos!.map((subchapter) {
-                                        return Padding(
-                                          padding: const EdgeInsets.only(left: 8.0),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(subchapter.text, style: ConstantsApp.SubchapterModule,),
-                                              subchapter.listaEpisodios == null
-                                              ? Container() :
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(left: 8.0),
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: subchapter.listaEpisodios!.map((episode) {
-                                                        return Text(episode.text, style: ConstantsApp.EpisodeModule,);
-                                                      }).toList(),
-                                                    ),
-                                                  )
-                                            ],
-                                          ),
-                                        );
-                                      }).toList()
-
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        );
+                        return ChapterWidget(chapter: chapter);
                       }).toList(),
                     )
                   ]
@@ -221,84 +178,89 @@ class ContentCard extends StatelessWidget {
   }
 }
 
-class EpisodeWidget extends StatelessWidget {
-  const EpisodeWidget({
+class ChapterWidget extends StatelessWidget {
+  const ChapterWidget({
     super.key,
-    required this.text
+    required this.chapter
   });
 
-  final String text;
+  final Capitulo chapter;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 64.0),
-      child: Text(text),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(chapter.texto,
+                style: ConstantsApp.ChapterModule,),
+              chapter.listaSubcapitulos == null
+                  ? Container()
+                  : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: chapter.listaSubcapitulos!.map((subchapter) {
+                    return Subchapter(subchapter: subchapter);
+                  }).toList()
+              )
+            ],
+          )
+        ),
+      ],
     );
   }
 }
 
-
-
-class ModuleWidget extends StatelessWidget {
-  const ModuleWidget({
+class Subchapter extends StatelessWidget {
+  const Subchapter({
     super.key,
-    required this.listaCapitulos
+    required this.subchapter
   });
 
-  final List<Capitulo> listaCapitulos;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      "titleModule",
-      style: const TextStyle(
-          fontSize: 20,
-          color: Colors.lightBlueAccent
-      ),);
-  }
-}
-
-
-class TitleSubchapter extends StatelessWidget {
-  const TitleSubchapter({
-    super.key,
-    required this.text
-  });
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16.0),
-      child: Text(text),
-    );
-  }
-}
-
-class TitleChapter extends StatelessWidget {
-  const TitleChapter({
-    super.key,
-    required this.text
-  });
-
-  final String text;
+  final Subcapitulo subchapter;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
-      child: Text(text, style:
-      const TextStyle(
-        fontSize: 16,
-        color: Color(0xFF133963)
-      ),),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(subchapter.text, style: ConstantsApp.SubchapterModule,),
+          subchapter.listaEpisodios == null
+          ? Container()
+              : EpisodeWidget(episodeList: subchapter.listaEpisodios)
+        ],
+      )
     );
   }
 }
 
+class EpisodeWidget extends StatelessWidget {
+  const EpisodeWidget({
+    super.key,
+    required this.episodeList,
+  });
 
+  final List<Episodio>? episodeList;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: episodeList!.map((episode) {
+          return Text(episode.text, style: ConstantsApp.EpisodeModule);
+        }).toList(),
+      )
+    );
+  }
+
+}
 
 
 class HeaderCard extends StatelessWidget{
