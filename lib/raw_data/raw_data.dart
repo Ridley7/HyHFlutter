@@ -4,20 +4,77 @@ import 'package:hiberus_university/models/program/capitulo.dart';
 import 'package:hiberus_university/models/program/episodio.dart';
 import 'package:hiberus_university/models/program/modulo.dart';
 import 'package:hiberus_university/models/program/subcapitulo.dart';
+import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
 
-List<ItemMenu> menu = [];
+List<ItemMenu> menu = [
+  ItemMenu(
+      imageBackground: "https://www.hiberus.com/themes/custom/hiwc_static/styling/base/assets/imagen-responsive-web.jpg",
+      labelSection: "Hiberus",
+      route: NavigationRoutes.HIBERUS_SCREEN_ROUTE,
+      amountCells: 1,
+    positionRightLabel: null,
+    positionLeftLabel: 0,
+    allWidth: false,
+  ),
+
+  ItemMenu(
+      imageBackground: "https://cdn.pixabay.com/photo/2017/08/06/01/49/table-2587598_1280.jpg",
+      labelSection: "Espacios",
+      route: NavigationRoutes.ZONES_SCREEN_ROUTE,
+      amountCells: 1,
+    positionRightLabel: 0,
+    positionLeftLabel: null,
+    allWidth: false,
+  ),
+
+  ItemMenu(
+      imageBackground: "https://cdn.pixabay.com/photo/2020/03/25/11/44/beginning-4967000_1280.jpg",
+      labelSection: "Profesores",
+      route: NavigationRoutes.LECTURES_SCREEN_ROUTE,
+      amountCells: 1,
+    positionRightLabel: null,
+    positionLeftLabel: 0,
+    allWidth: false,
+  ),
+
+  ItemMenu(
+      imageBackground: "https://cdn.pixabay.com/photo/2015/05/31/11/27/woman-791185_1280.jpg",
+      labelSection: "Horarios",
+      route: NavigationRoutes.SCHEDULE_SCREEN_ROUTE,
+      amountCells: 1,
+    positionRightLabel: 0,
+    positionLeftLabel: null,
+    allWidth: false,
+  ),
+
+  ItemMenu(
+      imageBackground: "https://cdn.pixabay.com/photo/2016/08/17/04/41/template-1599665_1280.png",
+      labelSection: "Programa",
+      route: NavigationRoutes.PROGRAM_SCREEN_ROUTE,
+      amountCells: 2,
+    positionRightLabel: null,
+    positionLeftLabel: 0,
+    allWidth: true,
+  ),
+];
 
 class ItemMenu {
   String imageBackground;
   String labelSection;
   String route;
   int amountCells;
+  double? positionRightLabel;
+  double? positionLeftLabel;
+  bool allWidth;
 
   ItemMenu({
     required this.imageBackground,
     required this.labelSection,
     required this.route,
-    required this.amountCells
+    required this.amountCells,
+    required this.positionRightLabel,
+    required this.positionLeftLabel,
+    required this.allWidth
   });
 
 }

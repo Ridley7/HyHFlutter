@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_map/flutter_image_map.dart';
 import 'package:hiberus_university/models/Espacio.dart';
 
-class EspaciosScreen extends StatefulWidget {
-  const EspaciosScreen({Key? key}) : super(key: key);
+class ZonesScreen extends StatefulWidget {
+  const ZonesScreen({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -11,7 +11,7 @@ class EspaciosScreen extends StatefulWidget {
   }
 }
 
-class ImageMapExample extends State<EspaciosScreen> {
+class ImageMapExample extends State<ZonesScreen> {
   double padding = 16.0;
   double bottomPadding = -230.0; //16.0;//-230.0;
 

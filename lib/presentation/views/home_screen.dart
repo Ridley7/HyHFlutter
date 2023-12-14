@@ -1,11 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:hiberus_university/pages/EspaciosScreen.dart';
-import 'package:hiberus_university/pages/HiberusScreen.dart';
-import 'package:hiberus_university/pages/LecturersScreen.dart';
-import 'package:hiberus_university/pages/program_screen.dart';
-import 'package:hiberus_university/pages/schedule_screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hiberus_university/constants/strings_app.dart';
+import 'package:hiberus_university/presentation/views/lecturers_screen.dart';
+import 'package:hiberus_university/presentation/views/program_screen.dart';
+import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
+import 'package:hiberus_university/presentation/views/schedule_screen.dart';
+import 'package:hiberus_university/raw_data/raw_data.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -21,7 +23,29 @@ class HomeScreen extends StatelessWidget {
               crossAxisCount: 2,
             crossAxisSpacing: 2,
             mainAxisSpacing: 3,
-            children: [
+            children:
+
+            menu.map((item) {
+              return StaggeredGridTile.extent(
+                  crossAxisCellCount: item.amountCells,
+                  mainAxisExtent: size.height / 3,
+                  child: HHTile(
+                    imageBackground: item.imageBackground,
+                    labelSection: item.labelSection,
+                    callback: (){
+                      context.push(item.route);
+                    },
+                    width: item.allWidth ? size.width : size.width / 2,
+                    leftLabel: item.positionLeftLabel,
+                    rightLabel: item.positionRightLabel,
+                    //width: size.width / 2,
+                  )
+              );
+            }).toList()
+
+
+/*
+            [
 
               StaggeredGridTile.extent(
                   crossAxisCellCount: 1,
@@ -30,16 +54,13 @@ class HomeScreen extends StatelessWidget {
                       imageBackground: "https://cdn.pixabay.com/photo/2023/10/28/18/02/songbird-8348139_1280.png",
                       labelSection: "Hiberus",
                       callback: (){
-                        Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => const HiberusScreen()
-                            )
-                        );
+                        context.push(NavigationRoutes.HIBERUS_SCREEN_ROUTE);
                       },
                     width: size.width / 2,
+                    leftLabel: 0,
+                    rightLabel: null,
                   )
               ),
-
 
               StaggeredGridTile.extent(
                   crossAxisCellCount: 1,
@@ -48,11 +69,7 @@ class HomeScreen extends StatelessWidget {
                       imageBackground: "https://cdn.pixabay.com/photo/2023/10/28/18/02/songbird-8348139_1280.png",
                       labelSection: "Espacios",
                       callback: (){
-                        Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => const EspaciosScreen()
-                            )
-                        );
+                        context.push(NavigationRoutes.ZONES_SCREEN_ROUTE);
                       },
                     width: size.width / 2,
                     leftLabel: null,
@@ -74,6 +91,8 @@ class HomeScreen extends StatelessWidget {
                         );
                       },
                     width: size.width / 2,
+                    leftLabel: 0,
+                    rightLabel: null,
                   )
               ),
 
@@ -111,11 +130,15 @@ class HomeScreen extends StatelessWidget {
                           )
                       );
                     },
+                    width: size.width,
+                    leftLabel: 0,
+                    rightLabel: null,
                   )
               )
 
-
             ],
+            */
+
           )
       ),
     );
@@ -148,10 +171,9 @@ class HHTile extends StatelessWidget {
             child: Image.network(
                 imageBackground,
               width: width,
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
             onTap: (){
-              //print("Pulsando");
               callback();
             },
           ),
