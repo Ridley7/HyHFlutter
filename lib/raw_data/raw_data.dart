@@ -1,7 +1,26 @@
+import 'dart:ui';
+
 import 'package:hiberus_university/models/program/capitulo.dart';
 import 'package:hiberus_university/models/program/episodio.dart';
 import 'package:hiberus_university/models/program/modulo.dart';
 import 'package:hiberus_university/models/program/subcapitulo.dart';
+
+List<ItemMenu> menu = [];
+
+class ItemMenu {
+  String imageBackground;
+  String labelSection;
+  String route;
+  int amountCells;
+
+  ItemMenu({
+    required this.imageBackground,
+    required this.labelSection,
+    required this.route,
+    required this.amountCells
+  });
+
+}
 
 List<Modulo> temario = [
   Modulo(
