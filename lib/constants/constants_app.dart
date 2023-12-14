@@ -18,5 +18,4 @@ class ConstantsApp {
     fontSize: 36
   );
 
-
 }
