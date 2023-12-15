@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/constants/strings_app.dart';
+import 'package:hiberus_university/widgets/hiberus/corporative_button.dart';
+import 'package:hiberus_university/widgets/hiberus/custom_form_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({super.key});
@@ -11,7 +13,6 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
-
   final TextEditingController _controllerName = TextEditingController();
   final TextEditingController _controllerEmailCompany = TextEditingController();
   final TextEditingController _controllerTelephone = TextEditingController();
@@ -29,10 +30,7 @@ class _ContactPageState extends State<ContactPage> {
         child: Container(
           child: Column(
             children: [
-              Text(
-                StringsApp.TE_INTERESA,
-                style: ConstantsApp.TittleApp
-              ),
+              Text(StringsApp.TE_INTERESA, style: ConstantsApp.TittleApp),
               const SizedBox(
                 height: 20,
               ),
@@ -51,104 +49,27 @@ class _ContactPageState extends State<ContactPage> {
                           controllerName: _controllerName,
                           hintText: "Nombre*",
                         ),
-
                         CustomFormWidget(
-                            controllerName: _controllerEmailCompany,
-                            hintText: "Email de empresa",
-                          expresionRegular: RegExp(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"),
-                          messageAdhoc: "Introduzca un correo electronico valido",
+                          controllerName: _controllerEmailCompany,
+                          hintText: "Email de empresa",
+                          expresionRegular: RegExp(
+                              r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"),
+                          messageAdhoc:
+                              "Introduzca un correo electronico valido",
                         ),
-
-/*
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0),
-                          child: TextFormField(
-                            controller: _controllerEmailCompany,
-                            decoration: const InputDecoration(
-                              hintText: "Email de empresa*",
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(2)),
-                                borderSide:
-                                BorderSide(color: Colors.black54),
-                              ),
-                            ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Campo obligatorio";
-                              }
-
-                              if (!RegExp(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$").hasMatch(value)) {
-                                return 'Introduzca un correo electronico valido';
-                              }
-
-                              return null;
-                            },
-                          ),
-                        ),
-                        */
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0),
-                          child: TextFormField(
-                            controller: _controllerTelephone,
-                            decoration: const InputDecoration(
-                              hintText: "Teléfono",
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(2)),
-                                borderSide:
-                                BorderSide(color: Colors.black54),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0),
-                          child: TextFormField(
-                            controller: _controllerCompany,
-                            decoration: const InputDecoration(
-                              hintText: "Compañia*",
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(2)),
-                                borderSide:
-                                BorderSide(color: Colors.black54),
-                              ),
-                            ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Campo obligatorio";
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8.0),
-                          child: TextFormField(
-                            controller: _controllerMessage,
-                            decoration: const InputDecoration(
-                              hintText: "\t\tMensaje",
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 50.0),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(2)),
-                                borderSide:
-                                BorderSide(color: Colors.black54),
-                              ),
-                            ),
-                          ),
+                        CustomFormWidget(
+                            controllerName: _controllerTelephone,
+                            hintText: "Teléfono"),
+                        CustomFormWidget(
+                            controllerName: _controllerCompany,
+                            hintText: "Compañia"),
+                        CustomFormWidget(
+                          controllerName: _controllerMessage,
+                          hintText: "\t\tMensaje",
+                          contentPadding: 50,
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 4.0),
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
                           child: Row(
                             children: [
                               Checkbox(
@@ -160,15 +81,14 @@ class _ContactPageState extends State<ContactPage> {
                                   }),
                               const Flexible(
                                   child: Text(
-                                    "Me gustaría recibir comunicaciones de marketing de Hiberus y sobre sus productos, servicios y eventos.",
-                                    style: TextStyle(fontSize: 12),
-                                  ))
+                                StringsApp.RECIBIR_COMUNICACIONES,
+                                style: TextStyle(fontSize: 12),
+                              ))
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 4.0),
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
                           child: Row(
                             children: [
                               Checkbox(
@@ -179,66 +99,89 @@ class _ContactPageState extends State<ContactPage> {
                                     });
                                   }),
                               Flexible(
-                                  child: RichText(
-                                      text: const TextSpan(children: [
-                                        TextSpan(
-                                            text:
-                                            "Acepto el aviso legal y la politica de privacidad",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.black)),
-                                        TextSpan(
-                                            text: "*",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.red))
-                                      ])))
+                                  child: Wrap(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () async {
+                                      if (await canLaunchUrl(Uri.parse(
+                                          "https://www.hiberus.com/aviso-legal"))) {
+                                        launchUrl(
+                                            Uri.parse(
+                                                "https://www.hiberus.com/aviso-legal"),
+                                            mode:
+                                                LaunchMode.externalApplication);
+                                      } else {
+                                        if (!mounted) return;
+
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text(StringsApp.ERROR_URL)));
+                                      }
+                                    },
+                                    child: const Text(
+                                      StringsApp.AVISO_LEGAL,
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      if (await canLaunchUrl(Uri.parse(
+                                          "https://www.hiberus.com/aviso-legal"))) {
+                                        launchUrl(
+                                            Uri.parse(
+                                                "https://www.hiberus.com/aviso-legal"),
+                                            mode:
+                                                LaunchMode.externalApplication);
+                                      } else {
+                                        if (!mounted) return;
+
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text(StringsApp.ERROR_URL)));
+                                      }
+                                    },
+                                    child: const Text(
+                                      StringsApp.POLITICA_PRIVACIDAD,
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                  ),
+                                  const Text(
+                                    "*",
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.red),
+                                  )
+                                ],
+                              ))
                             ],
                           ),
                         ),
                         Padding(
-                          padding:
-                          const EdgeInsets.symmetric(vertical: 8.0),
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: SizedBox(
-                            width: MediaQuery.of(context).size.width *
-                                0.8,
-                            height:
-                            MediaQuery.of(context).size.height *
-                                0.1,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                if (!_formKey.currentState!
-                                    .validate() ) {
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            height: MediaQuery.of(context).size.height * 0.1,
+                            child: CorporativeButton(
+                              callback: (){
+                                if (!_formKey.currentState!.validate()) {
                                   //Todo correcto
                                   print("ERROR");
                                 }
 
-                                if(!_privacyPolicy){
+                                if (!_privacyPolicy) {
                                   showDialog(
                                       context: context,
-                                      builder: (BuildContext context) => const AlertDialog(
+                                      builder: (BuildContext context) =>
+                                      const AlertDialog(
                                         title: Text("Error"),
-                                        content: Text("Debe aceptar las politicas de privacidad"),
-
-                                      )
-                                  );
-                                }else{
+                                        content: Text(
+                                            "Debe aceptar las politicas de privacidad"),
+                                      ));
+                                } else {
                                   //Todo correcto
                                 }
                               },
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.orange,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.circular(
-                                          10.0))),
-                              child: const Text(
-                                "Recibir más información",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22),
-                              ),
-                            ),
+                              text: StringsApp.MAS_INFORMACION,
+                            )
                           ),
                         )
                       ],
@@ -247,62 +190,6 @@ class _ContactPageState extends State<ContactPage> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class CustomFormWidget extends StatelessWidget {
-  const CustomFormWidget({
-    super.key,
-    required this.controllerName,
-    required this.hintText,
-    this.expresionRegular,
-    this.messageAdhoc
-  });
-
-  final TextEditingController controllerName;
-  final String hintText;
-  final RegExp? expresionRegular;
-  final String? messageAdhoc;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-          vertical: 8.0),
-      child: TextFormField(
-        controller: controllerName,
-        decoration: InputDecoration(
-          hintText: hintText,
-          enabledBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-                Radius.circular(2)),
-            borderSide:
-            BorderSide(color: Colors.black54),
-          ),
-        ),
-        validator: (value) {
-          if (value!.isEmpty) {
-            return StringsApp.CAMPO_OBLIGATORIO;
-          }
-
-          if(expresionRegular == null){
-            return null;
-          }
-
-          if(!expresionRegular!.hasMatch(value)){
-            return messageAdhoc;
-          }
-
-          return null;
-
-          /*
-          if (!RegExp(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$").hasMatch(value)) {
-            return 'Introduzca un correo electronico valido';
-          }
-          */
-        },
       ),
     );
   }

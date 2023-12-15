@@ -23,4 +23,10 @@ static const String HIBERUS_PARAGRAPH_TWO_A = "Nuestro proyecto es una iniciativ
  static const String DESCUBRE_MAS = "Si quieres descubrir más sobre la Hiberus University o más información sobre los programas formativos, déjanos tus datos y nos pondremos en contacto contigo.";
  static const String CAMPO_OBLIGATORIO = "Campo obligatorio";
 
+ //Form Page
+static const String RECIBIR_COMUNICACIONES = "Me gustaría recibir comunicaciones de marketing de Hiberus y sobre sus productos, servicios y eventos.";
+static const String AVISO_LEGAL = "Acepto el aviso legal";
+static const String POLITICA_PRIVACIDAD = " y la politiva de privacidad";
+static const String ERROR_URL = "No es posible abrir la URL";
+static const String RECIBIR_MAS_INFORMACION = "Recibir más información";
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hiberus_university/constants/strings_app.dart';
+import 'package:hiberus_university/widgets/hiberus/corporative_button.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({
@@ -53,21 +54,14 @@ class LandingPage extends StatelessWidget {
             child: SizedBox(
               width: size.width * 0.6,
               height: size.height * 0.1,
-              child: ElevatedButton(
-                onPressed: () {
+              child: CorporativeButton(
+                callback: (){
                   _pageController.nextPage(
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.bounceIn);
                 },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.orange,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0))),
-                child: const Text(
-                  StringsApp.MAS_INFORMACION,
-                  style: TextStyle(color: Colors.white, fontSize: 22),
-                ),
-              ),
+                text: StringsApp.MAS_INFORMACION,
+              )
             ),
           )
         ],
