@@ -24,13 +24,13 @@ class ImageMapExample extends State<ZonesScreen> {
     List<ImageMapRegion> listRegions = [];
     ImageMapRegion tempRegion;
 
-    zones.forEach((key, espacio) {
+    zones.forEach((key, zone) {
       tempRegion = ImageMapRegion.fromRect(
           rect:
-              Rect.fromPoints(espacio.cornerTopLeft, espacio.cornerBottomRight),
+              Rect.fromPoints(zone.cornerTopLeft, zone.cornerBottomRight),
           color:
-              espacio.tapped ? espacio.selectedColor : espacio.unselectedColor,
-          title: espacio.id.toString());
+              zone.tapped ? zone.selectedColor : zone.unselectedColor,
+          title: zone.id.toString());
 
       listRegions.add(tempRegion);
     });
@@ -88,16 +88,15 @@ class ImageMapExample extends State<ZonesScreen> {
                   width: MediaQuery.of(context).size.width,
                   child: ImageMap(
                     image: Image.network("https://i.pinimg.com/564x/e6/81/48/e6814836ce7c227028936499061bc3bf.jpg"),
-                    //  image: Image.asset('assets/images/map_hiberus.jpg'),
                       onTap: (region) {
-                        print('Pressed: ${region.title} / ${region.link}');
+
                         setState(() {
                           int index = int.parse(region.title!);
 
                           //Comprobamos que no haya otra zona pulsada
-                          zones.forEach((key, espacio) {
-                            if (espacio.tapped && espacio.id != index) {
-                              espacio.tapped = false;
+                          zones.forEach((key, zone) {
+                            if (zone.tapped && zone.id != index) {
+                              zone.tapped = false;
                             }
                           });
 
@@ -111,13 +110,12 @@ class ImageMapExample extends State<ZonesScreen> {
                             zones[index]!.tapped =
                                 !zones[index]!.tapped;
 
-                            //Tenemos que pasar la informacion
+                            //asignamos info
                             selectedEspace = zones[index];
                           }
                         });
                       },
                       regions: _createRegions()
-
                       ),
                 ),
 
