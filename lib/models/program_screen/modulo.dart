@@ -1,4 +1,4 @@
-import 'package:hiberus_university/models/program/capitulo.dart';
+import 'package:hiberus_university/models/program_screen/capitulo.dart';
 
 class Modulo {
   String tituloModulo;

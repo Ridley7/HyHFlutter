@@ -1,5 +1,5 @@
 
-import 'package:hiberus_university/models/program/subcapitulo.dart';
+import 'package:hiberus_university/models/program_screen/subcapitulo.dart';
 
 class Capitulo {
   String texto;

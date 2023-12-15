@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hiberus_university/constants/constants_app.dart';
-import 'package:hiberus_university/models/program/episodio.dart';
+import 'package:hiberus_university/models/program_screen/episodio.dart';
 
 class EpisodeWidget extends StatelessWidget {
   const EpisodeWidget({

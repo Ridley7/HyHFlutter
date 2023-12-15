@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hiberus_university/models/program/capitulo.dart';
+import 'package:hiberus_university/models/program_screen/capitulo.dart';
 import 'package:hiberus_university/widgets/program/expandible_card/content_card.dart';
 import 'package:hiberus_university/widgets/program/expandible_card/header_card.dart';
 

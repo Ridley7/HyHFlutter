@@ -29,4 +29,7 @@ static const String AVISO_LEGAL = "Acepto el aviso legal";
 static const String POLITICA_PRIVACIDAD = " y la politiva de privacidad";
 static const String ERROR_URL = "No es posible abrir la URL";
 static const String RECIBIR_MAS_INFORMACION = "Recibir más información";
+
+//Textos pantalla espacios - zonas
+static const String ESPACIOS = "Espacios";
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Espacio{
+class Zone{
   int id;
   String name;
   String description;
@@ -12,7 +12,7 @@ class Espacio{
   Color selectedColor;
   Color unselectedColor;
 
-  Espacio({
+  Zone({
     required this.id,
     required this.name,
     required this.description,
