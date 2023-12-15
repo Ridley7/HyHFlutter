@@ -6,6 +6,41 @@ import 'package:hiberus_university/models/program/modulo.dart';
 import 'package:hiberus_university/models/program/subcapitulo.dart';
 import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
 
+List<InfoGraphic> infografia = [
+  InfoGraphic(
+      routeAsset: "assets/images/alumnos.png",
+      description: "Más de 1285 alumnos y alumnas en 2022"
+  ),
+
+  InfoGraphic(
+      routeAsset: "assets/images/contratacion.png",
+      description: "80% de contratación de alumnos"
+  ),
+
+  InfoGraphic(
+      routeAsset: "assets/images/formacion.png",
+      description: "Formación intensiva y especifica"
+  ),
+
+  InfoGraphic(
+      routeAsset: "assets/images/tecnologias.png",
+      description: "Tecnologías punteras en el mercado"
+  ),
+
+];
+
+class InfoGraphic {
+  String routeAsset;
+  String description;
+
+  InfoGraphic({
+    required this.routeAsset,
+    required this.description,
+  });
+
+}
+
+
 List<ItemMenu> menu = [
   ItemMenu(
       imageBackground: "https://www.hiberus.com/themes/custom/hiwc_static/styling/base/assets/imagen-responsive-web.jpg",

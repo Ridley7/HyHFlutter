@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:hiberus_university/constants/strings_app.dart';
 import 'package:hiberus_university/presentation/views/program_screen.dart';
-import 'package:hiberus_university/presentation/views/hiberus_screen.dart';
+import 'package:hiberus_university/presentation/views/hiberus_screen/hiberus_screen.dart';
 import 'package:hiberus_university/presentation/views/home_screen.dart';
 import 'package:hiberus_university/presentation/views/lecturers_screen.dart';
 import 'package:hiberus_university/presentation/views/schedule_screen.dart';

@@ -18,4 +18,7 @@ class ConstantsApp {
     fontSize: 36
   );
 
+  static const TextStyle LabelMenuTile = TextStyle (color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold);
+  static const TextStyle InfoGraphicPage = TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold);
+
 }
