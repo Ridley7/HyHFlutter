@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/constants/strings_app.dart';
+import 'package:hiberus_university/raw_data/raw_data.dart';
+import 'package:hiberus_university/widgets/schedule/holy_day_calendar.dart';
+import 'package:hiberus_university/widgets/schedule/work_day_calendar.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -17,78 +20,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>{
 
   DateTime _focusedDay = DateTime.utc(2023, 12, 6);
   DateTime? _selectedDay;
-  Map<DateTime, InfoDay> events = {
-    DateTime(2023, 9, 4): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 5): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 6): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 7): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 11): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 12): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 13): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 14): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 18): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 19): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 20): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 21): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 25): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 26): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 9, 27): InfoDay(WorkdayStatus.workday, [Event("Vencimiento de RECIBI MATERIAL")]),
-    DateTime(2023, 9, 28): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 2): InfoDay(WorkdayStatus.workday, [Event("Vencimiento de propuesta para el Proyecto Final")]),
-    DateTime(2023, 10, 3): InfoDay(WorkdayStatus.workday, [Event("Prueba Intermedia")]),
-    DateTime(2023, 10, 4): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 5): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 9): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 10): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 11): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 12): InfoDay(WorkdayStatus.holiday, []),
-    DateTime(2023, 10, 16): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 17): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 18): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 19): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 23): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 24): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 25): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 26): InfoDay(WorkdayStatus.workday, [Event("Examen Final")]),
-    DateTime(2023, 10, 30): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 10, 31): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 1): InfoDay(WorkdayStatus.holiday, []),
-    DateTime(2023, 11, 2): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 6): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 7): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 8): InfoDay(WorkdayStatus.workday, [Event("Examen Intermedio")]),
-    DateTime(2023, 11, 9): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 13): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 14): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 15): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 16): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 17): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 20): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 21): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 22): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 23): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 27): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 28): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 29): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 11, 30): InfoDay(WorkdayStatus.workday, [Event("Vencimiento de RECIBI MATERIAL")]),
-    DateTime(2023, 12, 4): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 12, 5): InfoDay(WorkdayStatus.workday, [Event("Vencimiento de propuesta de Proyecto Final"), Event("Se abre Examen Final"),]),
-    DateTime(2023, 12, 6): InfoDay(WorkdayStatus.holiday, []),
-    DateTime(2023, 12, 7): InfoDay(WorkdayStatus.holiday, []),
-    DateTime(2023, 12, 8): InfoDay(WorkdayStatus.holiday, []),
 
-    DateTime(2023, 12, 11): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 12, 12): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 12, 13): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 12, 14): InfoDay(WorkdayStatus.workday, []),
-
-    DateTime(2023, 12, 18): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 12, 19): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 12, 20): InfoDay(WorkdayStatus.workday, []),
-    DateTime(2023, 12, 21): InfoDay(WorkdayStatus.workday, []),
-
-    DateTime(2023, 12, 25): InfoDay(WorkdayStatus.holiday, []),
-  };
   late final ValueNotifier<List<Event>> _selectedEvents;
 
   @override
@@ -180,7 +112,6 @@ class _ScheduleScreenState extends State<ScheduleScreen>{
 
                 prioritizedBuilder: (context, date, _){
 
-                  //if(events.containsKey(DateTime(date.year, date.month, date.day))){
                   if(events[DateTime(date.year, date.month, date.day)]?.workdayStatus == WorkdayStatus.holiday){
                     return HolyDayCalendar(date: date,);
                   }else if(events[DateTime(date.year, date.month, date.day)]?.workdayStatus == WorkdayStatus.workday){
@@ -272,71 +203,9 @@ class _ScheduleScreenState extends State<ScheduleScreen>{
 
 
 
-class HolyDayCalendar extends StatelessWidget {
-  const HolyDayCalendar({
-    super.key,
-    required this.date,
-  });
 
-  final DateTime date;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.zero,
-          color: Colors.red,
-          border: Border.all(
-              color: Colors.black,
-              width: 2.0
-          )
-      ),
-      child: Center(
-        child: Text(
-          "${date.day}",
-          style: TextStyle().copyWith(
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
-            color: Colors.white
-          ),
-        ),
-      ),
-    );
-  }
-}
 
-class WorkDayCalendar extends StatelessWidget {
-  const WorkDayCalendar({
-    super.key,
-    required this.date,
-  });
-
-  final DateTime date;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.zero,
-        color: Colors.amberAccent,
-        border: Border.all(
-          color: Colors.black,
-          width: 2.0
-        )
-      ),
-      child: Center(
-        child: Text(
-          "${date.day}",
-          style: TextStyle().copyWith(fontSize: 16.0, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
-}
 
 enum WorkdayStatus {
   holiday,
