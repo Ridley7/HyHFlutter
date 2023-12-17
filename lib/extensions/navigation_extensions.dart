@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/*
 extension NavigationExtension<T> on BuildContext{
   Future<T?> push(Widget page){
     return Navigator.push(this, MaterialPageRoute(builder: (context) => page));
@@ -13,4 +14,4 @@ extension NavigationExtension<T> on BuildContext{
   pop({T? result}){
     Navigator.maybePop(this, result);
   }
-}
+}*/

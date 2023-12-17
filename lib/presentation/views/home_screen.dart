@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                     imageBackground: item.imageBackground,
                     labelSection: item.labelSection,
                     callback: (){
-                      context.push(item.route);
+                      context.go(item.route);
                     },
                     width: item.allWidth ? size.width : size.width / 2,
                     leftLabel: item.positionLeftLabel,

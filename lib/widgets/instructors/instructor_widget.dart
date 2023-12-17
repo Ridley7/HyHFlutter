@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hiberus_university/models/instructors_screen/Instructor.dart';
 import 'package:hiberus_university/models/instructors_screen/tech.dart';
 import 'package:hiberus_university/pages/DetailLecturer.dart';
+import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
 import 'package:hiberus_university/widgets/instructors/icon_tech_widget.dart';
 
 class InstructorWidget extends StatelessWidget {
@@ -18,11 +20,11 @@ class InstructorWidget extends StatelessWidget {
 
     return GestureDetector(
       onTap: (){
-        Navigator.of(context).push(
-            MaterialPageRoute(
-                builder: (context) => DetailLecturer(instructor: instructor)
-            )
+
+        context.go(NavigationRoutes.LECTURER_DETAIL_ROUTE,
+        extra: instructor
         );
+
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
