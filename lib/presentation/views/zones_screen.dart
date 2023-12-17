@@ -4,6 +4,7 @@ import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/constants/strings_app.dart';
 import 'package:hiberus_university/models/zone_screen/zone.dart';
 import 'package:hiberus_university/raw_data/raw_data.dart';
+import 'package:hiberus_university/widgets/zones/RowDescriptionZone.dart';
 
 class ZonesScreen extends StatefulWidget {
   const ZonesScreen({Key? key}) : super(key: key);
@@ -19,45 +20,6 @@ class ImageMapExample extends State<ZonesScreen> {
   double bottomPadding = -230.0;
 
   Zone? selectedEspace;
-
-  List<ImageMapRegion> _createRegions() {
-    List<ImageMapRegion> listRegions = [];
-    ImageMapRegion tempRegion;
-
-    zones.forEach((key, zone) {
-      tempRegion = ImageMapRegion.fromRect(
-          rect:
-              Rect.fromPoints(zone.cornerTopLeft, zone.cornerBottomRight),
-          color:
-              zone.tapped ? zone.selectedColor : zone.unselectedColor,
-          title: zone.id.toString());
-
-      listRegions.add(tempRegion);
-    });
-
-    return listRegions;
-  }
-
-  Padding _createRowDescription(
-      String image, String nameDescription, String text) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          Image.asset("assets/images/${image}"),
-          const SizedBox(
-            width: 10,
-          ),
-          Text(
-            nameDescription,
-            style: const TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20),
-          ),
-          Text(text, style: const TextStyle(fontSize: 18, color: Colors.black)),
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,12 +83,16 @@ class ImageMapExample extends State<ZonesScreen> {
 
 
                 Positioned(
-                  bottom: 200,
+                  bottom: 150,
                   left: 16,
-                  child: Container(
-                    width: 200,
-                      height: 100,
-                      child: Text("dfdf", overflow: TextOverflow.ellipsis,),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                      child: const Padding(
+                        padding: EdgeInsets.only(right: 32.0, left: 16.0, top: 8.0),
+                        child: Text(StringsApp.PROMO_ZONAS,
+                          style: TextStyle(fontSize: 20),
+                        textAlign: TextAlign.center,),
+                      ),
                   ),
                 ),
 
@@ -137,8 +103,9 @@ class ImageMapExample extends State<ZonesScreen> {
                     left: 0,
                     right: 0,
                     bottom: bottomPadding,
-                    child: SizedBox(
+                    child: Container(
                       height: 230.0,
+                      color: Colors.white,
                       child: Column(
                         children: [
                           Container(
@@ -169,24 +136,24 @@ class ImageMapExample extends State<ZonesScreen> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    _createRowDescription(
-                                        "descripcion.png",
-                                        "Descripción: ",
-                                        selectedEspace?.description == null
-                                            ? ""
-                                            : selectedEspace!.description),
-                                    _createRowDescription(
-                                        "silla.png",
-                                        "Plazas: ",
-                                        selectedEspace?.spots == null
-                                            ? ""
-                                            : selectedEspace!.spots.toString()),
-                                    _createRowDescription(
-                                        "schedule.png",
-                                        "Horario: ",
-                                        selectedEspace?.schedule == null
-                                            ? ""
-                                            : selectedEspace!.schedule),
+                                    RowDescriptionZone(
+                                        routeIcon: "descripcion.png",
+                                        nameDescription: "Descripción: ",
+                                        textDescription: selectedEspace?.description
+                                    ),
+
+                                    RowDescriptionZone(
+                                        routeIcon: "silla.png",
+                                        nameDescription: "Plazas: ",
+                                        textDescription: selectedEspace?.spots.toString()
+                                    ),
+
+                                    RowDescriptionZone(
+                                        routeIcon: "schedule.png",
+                                        nameDescription: "Horario: ",
+                                        textDescription: selectedEspace?.schedule
+                                    ),
+
 
                                   ],
                                 ),
@@ -203,4 +170,25 @@ class ImageMapExample extends State<ZonesScreen> {
       ),
     );
   }
+
+  List<ImageMapRegion> _createRegions() {
+    List<ImageMapRegion> listRegions = [];
+    ImageMapRegion tempRegion;
+
+    zones.forEach((key, zone) {
+      tempRegion = ImageMapRegion.fromRect(
+          rect:
+          Rect.fromPoints(zone.cornerTopLeft, zone.cornerBottomRight),
+          color:
+          zone.tapped ? zone.selectedColor : zone.unselectedColor,
+          title: zone.id.toString());
+
+      listRegions.add(tempRegion);
+    });
+
+    return listRegions;
+  }
+
+
 }
+

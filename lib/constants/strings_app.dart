@@ -32,4 +32,5 @@ static const String RECIBIR_MAS_INFORMACION = "Recibir más información";
 
 //Textos pantalla espacios - zonas
 static const String ESPACIOS = "Espacios";
+static const String PROMO_ZONAS = "La Hiberus University cuenta con todo las instalaciones y equipos necesarios para poder llevar a cabo cualquier formación. Compruebalo tu mismo.";
 }
