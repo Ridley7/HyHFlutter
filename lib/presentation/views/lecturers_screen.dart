@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hiberus_university/models/Instructor.dart';
+import 'package:hiberus_university/models/instructors_screen/Instructor.dart';
+import 'package:hiberus_university/models/instructors_screen/tech.dart';
 import 'package:hiberus_university/pages/DetailLecturer.dart';
+import 'package:hiberus_university/raw_data/raw_data.dart';
 
 class LecturersScreen extends StatelessWidget {
   const LecturersScreen({super.key});
@@ -10,91 +12,7 @@ class LecturersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    List<Instructor> listaInstructores = [
-      Instructor(
-          id: 0,
-          name: "Marcos Calvo García",
-          urlImage: "https://media.istockphoto.com/id/1388253782/es/foto/positivo-exitoso-hombre-de-negocios-profesional-de-negocios-del-milenio-retrato-de-la-cabeza.jpg?s=612x612&w=0&k=20&c=gDMgYu50FUOTQhCZwYM6deYTzHvKkKAK9e945a21hZ8=",
-          bio: "Biografia del instructor",
-          firstTechnology: Tech.android,
-        secondTechnology: Tech.ios,
-        thirdTechnology: Tech.flutter,
-        jobTitle: "Tech Lead Hiberus",
-        urlGithub: "",
-        urlLinkedin: "",
-        urlTwitter: ""
-      ),
 
-      Instructor(
-          id: 1,
-          name: "Alberto Navas Alba",
-          urlImage: "https://media.istockphoto.com/id/1476170969/es/foto/retrato-de-un-joven-listo-para-el-trabajo-concepto-de-negocio.jpg?s=612x612&w=0&k=20&c=AAuUZOmmNYo6hzDYNR7d88Ihnxo4jrypqVJa-B8vjys=",
-          bio: "Biografia del instructor",
-          firstTechnology: Tech.android,
-          secondTechnology: null,
-          thirdTechnology: null,
-          jobTitle: "Tech Lead Hiberus",
-          urlGithub: "Desarrollador de Software Senior",
-          urlLinkedin: "",
-          urlTwitter: ""
-      ),
-
-      Instructor(
-          id: 2,
-          name: "Javier Torne Hernández",
-          urlImage: "https://media.istockphoto.com/id/1307791650/es/foto/retrato-a-la-cabeza-del-sonriente-empresario-cauc%C3%A1sico-posa-en-el-lugar-de-trabajo.jpg?s=612x612&w=0&k=20&c=h7JT5UHiPf_S7JBLq6tG5os21j6tn_pxYSjzzuRXpjg=",
-          bio: "Biografia del instructor",
-          firstTechnology: Tech.ios,
-          secondTechnology: null,
-          thirdTechnology: null,
-          jobTitle: "iOS Tech Lead",
-          urlGithub: "",
-          urlLinkedin: "",
-          urlTwitter: ""
-      ),
-
-      Instructor(
-          id: 3,
-          name: "Javier Cobos Escalante",
-          urlImage: "https://cdn.pixabay.com/photo/2018/11/08/23/52/man-3803551_1280.jpg",
-          bio: "Biografia del instructor",
-          firstTechnology: Tech.ios,
-          secondTechnology: null,
-          thirdTechnology: null,
-          jobTitle: "iOS Tech Lead",
-          urlGithub: "",
-          urlLinkedin: "",
-          urlTwitter: ""
-      ),
-
-      Instructor(
-          id: 4,
-          name: "Alejandro Giménez Garulo",
-          urlImage: "https://media.istockphoto.com/id/1398338985/es/foto/cabeza-de-un-hombre-con-el-cabello-te%C3%B1ido-de-azul-sonriendo-en-el-interior.jpg?s=612x612&w=0&k=20&c=QUl332WLxJIubp9oOVMoQk6CO3QjL-RMohFTgmHfJeI=",
-          bio: "Biografia del instructor",
-          firstTechnology: Tech.scrum,
-          secondTechnology: null,
-          thirdTechnology: null,
-          jobTitle: "Lecturer / Trainer Gráfico",
-          urlGithub: "",
-          urlLinkedin: "",
-          urlTwitter: ""
-      ),
-
-      Instructor(
-          id: 5,
-          name: "Daniel Chueca",
-          urlImage: "https://media.istockphoto.com/id/517614873/es/foto/modelo-masculino-en-el-estudio.jpg?s=612x612&w=0&k=20&c=mDVaZjvVSpUGsVSLCQTbu7NtObVkgTsHjntlnddH1wY=",
-          bio: "Biografia del instructor",
-          firstTechnology: Tech.flutter,
-          secondTechnology: null,
-          thirdTechnology: null,
-          jobTitle: "Flutter Developer",
-          urlGithub: "",
-          urlLinkedin: "",
-          urlTwitter: ""
-      ),
-    ];
 
     return Scaffold(
       body: SafeArea(
@@ -130,12 +48,7 @@ class LecturersScreen extends StatelessWidget {
   }
 }
 
-enum Tech{
-  android,
-  ios,
-  flutter,
-  scrum
-}
+
 
 class InstructorWidget extends StatelessWidget {
   const InstructorWidget({
