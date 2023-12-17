@@ -8,7 +8,6 @@ import 'package:hiberus_university/models/program_screen/episodio.dart';
 import 'package:hiberus_university/models/program_screen/modulo.dart';
 import 'package:hiberus_university/models/program_screen/subcapitulo.dart';
 import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
-import 'package:hiberus_university/presentation/views/lecturers_screen.dart';
 
 List<Instructor> listaInstructores = [
   Instructor(

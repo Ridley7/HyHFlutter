@@ -16,31 +16,6 @@ class InstructorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Widget prepareListTech(Tech? technology){
-
-      switch(technology){
-        case Tech.android:
-          return const IconTechWidget(
-              backgroundColor: Colors.greenAccent,
-              iconTechnology: Icons.android);
-        case Tech.ios:
-          return const IconTechWidget(
-              backgroundColor: Colors.grey,
-              iconTechnology: Icons.apple);
-        case Tech.flutter:
-          return const IconTechWidget(
-              backgroundColor: Colors.blueAccent,
-              iconTechnology: Icons.flutter_dash);
-        case Tech.scrum:
-          return const IconTechWidget(
-              backgroundColor: Colors.redAccent,
-              iconTechnology: Icons.schedule
-          );
-        default:
-          return const SizedBox();
-      }
-    }
-
     return GestureDetector(
       onTap: (){
         Navigator.of(context).push(
@@ -56,7 +31,6 @@ class InstructorWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
 
             //Usamos ClipRRect porque Container no nos deja cortar por encima de la imagen
@@ -92,7 +66,6 @@ class InstructorWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   prepareListTech(instructor.firstTechnology),
                   const SizedBox(width: 8,),
                   prepareListTech(instructor.secondTechnology),
@@ -105,7 +78,30 @@ class InstructorWidget extends StatelessWidget {
         ),
       ),
     );
+  }
 
+  Widget prepareListTech(Tech? technology){
 
+    switch(technology){
+      case Tech.android:
+        return const IconTechWidget(
+            backgroundColor: Colors.greenAccent,
+            iconTechnology: Icons.android);
+      case Tech.ios:
+        return const IconTechWidget(
+            backgroundColor: Colors.grey,
+            iconTechnology: Icons.apple);
+      case Tech.flutter:
+        return const IconTechWidget(
+            backgroundColor: Colors.blueAccent,
+            iconTechnology: Icons.flutter_dash);
+      case Tech.scrum:
+        return const IconTechWidget(
+            backgroundColor: Colors.redAccent,
+            iconTechnology: Icons.schedule
+        );
+      default:
+        return const SizedBox();
+    }
   }
 }

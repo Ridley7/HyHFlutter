@@ -1,6 +1,5 @@
 
 import 'package:hiberus_university/models/instructors_screen/tech.dart';
-import 'package:hiberus_university/presentation/views/lecturers_screen.dart';
 
 class Instructor{
   int id;
