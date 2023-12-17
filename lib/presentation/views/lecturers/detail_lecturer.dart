@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hiberus_university/models/instructors_screen/Instructor.dart';
+import 'package:hiberus_university/widgets/instructors/button_social_network.dart';
 
 
 class DetailLecturer extends StatelessWidget {
@@ -80,90 +81,41 @@ class DetailLecturer extends StatelessWidget {
 
             const SizedBox(height: 16,),
 
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  radius: 25,
-                  child: GestureDetector(
-                    child: const Center(
-                      child: Icon(
-                        FontAwesomeIcons.apple,
-                        size: 32,),
-                    ),
-                    onTap: (){
-                    },
-                  ),
-                ),
-                const SizedBox(width: 12,),
+                ButtonSocialNetwork(icon: FontAwesomeIcons.apple),
 
-                CircleAvatar(
-                  radius: 25,
-                  child: GestureDetector(
-                    child: const Center(
-                      child: Icon(
-                        FontAwesomeIcons.github,
-                        size: 32,),
-                    ),
-                    onTap: (){
-                    },
-                  ),
-                ),
-                const SizedBox(width: 12,),
+                SizedBox(width: 12,),
 
-                CircleAvatar(
-                  radius: 25,
-                  child: GestureDetector(
-                    child: const Center(
-                      child: Icon(
-                        FontAwesomeIcons.twitter,
-                        size: 32,),
-                    ),
-                    onTap: (){
-                    },
-                  ),
-                ),
-                const SizedBox(width: 12,),
+                ButtonSocialNetwork(icon: FontAwesomeIcons.github),
 
-                CircleAvatar(
-                  radius: 25,
-                  child: GestureDetector(
-                    child: const Center(
-                      child: Icon(
-                        FontAwesomeIcons.linkedin,
-                        size: 32,),
-                    ),
-                    onTap: (){
-                    },
-                  ),
-                ),
+                SizedBox(width: 12,),
 
+                ButtonSocialNetwork(icon: FontAwesomeIcons.twitter),
 
+                SizedBox(width: 12,),
 
+                ButtonSocialNetwork(icon: FontAwesomeIcons.linkedin),
               ],
             ),
 
             //About
             const SizedBox(height: 16,),
-            Divider(), //Aqui va un aboyt
+            const Divider(),
             const SizedBox(height: 16,),
 
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0),
-              child: Container(
-
-                child: const Column(
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 32.0),
+              child: SizedBox(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Acerca de",
                       style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold,),
-
                     ),
-
                     SizedBox(height: 16,),
-
                     Text(
                       "ferri theophrastus vero egestas legere nominavi maximus quo vituperata doctus porro non putent potenti consectetuer dignissim volumus fringilla montes postea",
                       style: TextStyle(fontSize: 18, height: 1.4)
@@ -172,11 +124,10 @@ class DetailLecturer extends StatelessWidget {
                 ),
               ),
             )
-
-
           ],
         ),
       )
     );
   }
 }
+
