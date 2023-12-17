@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hiberus_university/models/instructors_screen/Instructor.dart';
 import 'package:hiberus_university/models/instructors_screen/tech.dart';
-import 'package:hiberus_university/pages/DetailLecturer.dart';
 import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
 import 'package:hiberus_university/widgets/instructors/icon_tech_widget.dart';
 
