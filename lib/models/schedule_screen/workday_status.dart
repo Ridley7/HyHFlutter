@@ -1,0 +1,4 @@
+enum WorkdayStatus {
+  holiday,
+  workday,
+}

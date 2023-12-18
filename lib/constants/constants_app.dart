@@ -21,4 +21,5 @@ class ConstantsApp {
   static const TextStyle LabelMenuTile = TextStyle (color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold);
   static const TextStyle InfoGraphicPage = TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold);
 
+  static TextStyle CalendarStyle = const TextStyle().copyWith(color: Colors.blue[800]);
 }

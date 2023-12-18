@@ -2,14 +2,15 @@ import 'dart:ui';
 
 import 'package:hiberus_university/models/instructors_screen/Instructor.dart';
 import 'package:hiberus_university/models/instructors_screen/tech.dart';
+import 'package:hiberus_university/models/schedule_screen/event.dart';
+import 'package:hiberus_university/models/schedule_screen/info_day.dart';
+import 'package:hiberus_university/models/schedule_screen/workday_status.dart';
 import 'package:hiberus_university/models/zone_screen/zone.dart';
 import 'package:hiberus_university/models/program_screen/capitulo.dart';
 import 'package:hiberus_university/models/program_screen/episodio.dart';
 import 'package:hiberus_university/models/program_screen/modulo.dart';
 import 'package:hiberus_university/models/program_screen/subcapitulo.dart';
 import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
-import 'package:hiberus_university/presentation/views/schedule_screen.dart';
-
 Map<DateTime, InfoDay> events = {
   DateTime(2023, 9, 4): InfoDay(WorkdayStatus.workday, []),
   DateTime(2023, 9, 5): InfoDay(WorkdayStatus.workday, []),
