@@ -4,9 +4,9 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/di/app_modules.dart';
+import 'package:hiberus_university/models/home_screen/item_menu.dart';
 import 'package:hiberus_university/models/resource_state.dart';
 import 'package:hiberus_university/presentation/views/home_screen/viewmodel/home_view_model.dart';
-import 'package:hiberus_university/raw_data/raw_data.dart';
 import 'package:hiberus_university/widgets/commons/error_view.dart';
 import 'package:hiberus_university/widgets/commons/loading_view.dart';
 import 'package:hiberus_university/widgets/home_screen/menu_tile.dart';
@@ -21,6 +21,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   final HomeViewModel _homeViewModel = inject<HomeViewModel>();
+  List<ItemMenu> menu = [];
 
   @override
   void initState() {
@@ -36,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
         case Status.SUCCESS:
           LoadingView.hide();
           setState(() {
-            print("AQUI ESPERAMOS");
+            menu = state.data!;
           });
           break;
         case Status.ERROR:

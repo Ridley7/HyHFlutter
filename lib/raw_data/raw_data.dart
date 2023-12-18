@@ -289,8 +289,9 @@ class InfoGraphic {
 }
 
 //Datos para el menu
-
+/*
 List<ItemMenu> menu = [
+
   ItemMenu(
       imageBackground: "https://www.hiberus.com/themes/custom/hiwc_static/styling/base/assets/imagen-responsive-web.jpg",
       labelSection: "Hiberus",
@@ -340,7 +341,9 @@ List<ItemMenu> menu = [
     positionLeftLabel: 0,
     allWidth: true,
   ),
+
 ];
+*/
 
 
 

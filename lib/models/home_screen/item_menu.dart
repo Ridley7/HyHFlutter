@@ -18,16 +18,13 @@ class ItemMenu {
   });
 
   factory ItemMenu.fromJson(Map<String, dynamic> json){
-    print("FLAG 100");
-    print(json.toString());
-
     return ItemMenu(
       imageBackground: json["imageBackground"],
       labelSection: json["labelSection"],
       route: json["route"],
       amountCells: json["amountCells"],
-      positionRightLabel: json["positionRightLabel"] == null ? null : json["positionRightLabel"].toDouble(),
-      positionLeftLabel: json["positionLeftLabel"] == null ? null : json["positionLeftLabel"].toDouble(),
+      positionRightLabel: json["positionRightLabel"]?.toDouble(),
+      positionLeftLabel: json["positionLeftLabel"]?.toDouble(),
       allWidth: json["allWidth"],
     );
   }

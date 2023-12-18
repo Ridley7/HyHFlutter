@@ -19,13 +19,7 @@ class HomeViewModel extends BaseViewModel{
     getMainMenuState.add(ResourceState.loading());
 
     _homeRepository.getMainMenu()
-    .then((value) {
-      List<ItemMenu> tempList = value;
-      print("FLAG 200 *******************************************************************");
-      print(tempList.length);
-
-      getMainMenuState.add(ResourceState.success(value));
-    })
+    .then((value) => getMainMenuState.add(ResourceState.success(value)))
     .catchError((error) => getMainMenuState.add(ResourceState.error(error)));
   }
 

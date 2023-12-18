@@ -16,7 +16,7 @@ class HomemenuRemoteImplementation{
   Future<List<ItemMenu>> getMainMenu() async{
     try{
       final response = await _networkClient.dio.get(NetworkConstants.HOME_MENU_PATH);
-      final listResponse = response.data;
+      final List listResponse = response.data;
       return listResponse.map((itemMenu) => ItemMenu.fromJson(itemMenu)).toList();
 
     }catch (error){
