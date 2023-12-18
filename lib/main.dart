@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hiberus_university/di/app_modules.dart';
 import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
 
 void main() {
+  AppModules().setup();
   runApp(const MyApp());
 }
 

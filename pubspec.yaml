@@ -48,7 +48,8 @@ dependencies:
   flutter_localization: ^0.1.14
   intl: ^0.18.1
   url_launcher: ^6.2.2
-
+  get_it: ^7.6.4
+  dio: ^5.4.0
 
 dev_dependencies:
   flutter_test:

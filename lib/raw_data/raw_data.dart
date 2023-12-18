@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:hiberus_university/models/home_screen/item_menu.dart';
 import 'package:hiberus_university/models/instructors_screen/Instructor.dart';
 import 'package:hiberus_university/models/instructors_screen/tech.dart';
 import 'package:hiberus_university/models/schedule_screen/event.dart';
@@ -287,6 +288,7 @@ class InfoGraphic {
 
 }
 
+//Datos para el menu
 
 List<ItemMenu> menu = [
   ItemMenu(
@@ -340,26 +342,7 @@ List<ItemMenu> menu = [
   ),
 ];
 
-class ItemMenu {
-  String imageBackground;
-  String labelSection;
-  String route;
-  int amountCells;
-  double? positionRightLabel;
-  double? positionLeftLabel;
-  bool allWidth;
 
-  ItemMenu({
-    required this.imageBackground,
-    required this.labelSection,
-    required this.route,
-    required this.amountCells,
-    required this.positionRightLabel,
-    required this.positionLeftLabel,
-    required this.allWidth
-  });
-
-}
 
 List<Modulo> temario = [
   Modulo(
