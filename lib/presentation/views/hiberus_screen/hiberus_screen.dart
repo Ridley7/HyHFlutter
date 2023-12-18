@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hiberus_university/pages/ClasesHiberus.dart';
 import 'package:hiberus_university/presentation/views/hiberus_screen/pages/contact_page.dart';
 import 'package:hiberus_university/presentation/views/hiberus_screen/pages/info_graphic_page.dart';
 import 'package:hiberus_university/presentation/views/hiberus_screen/pages/landing_page.dart';
