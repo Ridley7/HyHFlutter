@@ -1,6 +1,9 @@
 enum Tech{
-  android,
-  ios,
-  flutter,
-  scrum
+  android("android"),
+  ios("ios"),
+  flutter("flutter"),
+  scrum("scrum");
+
+  final String value;
+  const Tech(this.value);
 }

@@ -1,12 +1,10 @@
 import 'dart:ui';
 
-import 'package:hiberus_university/models/home_screen/item_menu.dart';
 import 'package:hiberus_university/models/instructors_screen/Instructor.dart';
 import 'package:hiberus_university/models/instructors_screen/tech.dart';
 import 'package:hiberus_university/models/schedule_screen/event.dart';
 import 'package:hiberus_university/models/schedule_screen/info_day.dart';
 import 'package:hiberus_university/models/schedule_screen/workday_status.dart';
-import 'package:hiberus_university/models/zone_screen/zone.dart';
 import 'package:hiberus_university/models/program_screen/capitulo.dart';
 import 'package:hiberus_university/models/program_screen/episodio.dart';
 import 'package:hiberus_university/models/program_screen/modulo.dart';
@@ -87,6 +85,7 @@ Map<DateTime, InfoDay> events = {
 
 //Datos para la pantalla de instructores
 List<Instructor> listaInstructores = [
+  /*
   Instructor(
       id: 0,
       name: "Marcos Calvo García",
@@ -170,6 +169,8 @@ List<Instructor> listaInstructores = [
       urlLinkedin: "",
       urlTwitter: ""
   ),
+
+   */
 ];
 
 //Datos para la pantalla de zonas

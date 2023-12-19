@@ -27,4 +27,30 @@ class Instructor{
     required this.urlTwitter,
     required this.urlLinkedin
 });
+
+  factory Instructor.fromJson(Map<String, dynamic> json) {
+   return Instructor(
+      id: json["id"],
+      bio: json["bio"],
+      name: json["name"],
+      jobTitle: json["jobTitle"],
+      urlImage: json["urlImage"],
+      urlGithub: json["urlGithub"],
+      urlTwitter: json["urlTwitter"],
+      urlLinkedin: json["urlLinkedin"],
+      firstTechnology: _getTechValue(json["firstTechnology"]),
+      thirdTechnology: json["thirdTechnology"] == null ? null : _getTechValue(json["thirdTechnology"]),
+     secondTechnology: json["secondTechnology"] == null ? null:  _getTechValue(json["secondTechnology"]),
+    );
+  }
+
+  static Tech _getTechValue(String techString) {
+    for (Tech tech in Tech.values) {
+      if (tech.value == techString) {
+        return tech;
+      }
+    }
+    throw Exception("Valor no válido para Tech: $techString");
+  }
+
 }
