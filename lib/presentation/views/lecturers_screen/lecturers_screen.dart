@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/constants/strings_app.dart';
 import 'package:hiberus_university/di/app_modules.dart';
+import 'package:hiberus_university/models/instructors_screen/Instructor.dart';
 import 'package:hiberus_university/models/resource_state.dart';
 import 'package:hiberus_university/presentation/views/lecturers_screen/viewmodel/LecturersViewModel.dart';
-import 'package:hiberus_university/raw_data/raw_data.dart';
 import 'package:hiberus_university/widgets/commons/error_view.dart';
 import 'package:hiberus_university/widgets/commons/loading_view.dart';
 import 'package:hiberus_university/widgets/instructors/instructor_widget.dart';
@@ -20,6 +20,7 @@ class LecturersScreen extends StatefulWidget {
 class _LecturersScreenState extends State<LecturersScreen> {
 
   final LecturersViewModel _lecturersViewModel = inject<LecturersViewModel>();
+  List<Instructor> listaInstructores = [];
 
   @override
   void initState() {
@@ -35,7 +36,6 @@ class _LecturersScreenState extends State<LecturersScreen> {
         case Status.SUCCESS:
           LoadingView.hide();
           setState(() {
-            print("Esperamos aqui");
             listaInstructores = state.data!;
           });
           break;

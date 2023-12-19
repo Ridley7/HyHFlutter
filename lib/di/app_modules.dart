@@ -21,6 +21,11 @@ class AppModules{
     _setupHomeMenuModule();
     _setupZonesModule();
     _setupLecturersModule();
+    _setupScheduleModule();
+  }
+  
+  _setupScheduleModule(){
+    //nject.registerFactory(() => ScheduleRemoteImplementation(networkClient: inject.get()));
   }
 
   _setupLecturersModule(){

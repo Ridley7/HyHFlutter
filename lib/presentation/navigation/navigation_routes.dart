@@ -6,7 +6,7 @@ import 'package:hiberus_university/presentation/views/hiberus_screen/hiberus_scr
 import 'package:hiberus_university/presentation/views/home_screen/home_screen.dart';
 import 'package:hiberus_university/presentation/views/lecturers_screen/lecturers_screen.dart';
 import 'package:hiberus_university/presentation/views/schedule_screen.dart';
-import 'package:hiberus_university/presentation/views/zones_screen.dart';
+import 'package:hiberus_university/presentation/views/zones_screen/zones_screen.dart';
 
 class NavigationRoutes{
   static const String INITIAL_ROUTE = "/";

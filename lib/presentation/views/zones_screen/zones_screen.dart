@@ -9,7 +9,7 @@ import 'package:hiberus_university/widgets/commons/error_view.dart';
 import 'package:hiberus_university/widgets/commons/loading_view.dart';
 import 'package:hiberus_university/widgets/zones/RowDescriptionZone.dart';
 
-import 'zones_screen/viewmodel/zones_view_model.dart';
+import 'viewmodel/zones_view_model.dart';
 
 class ZonesScreen extends StatefulWidget {
   const ZonesScreen({Key? key}) : super(key: key);
