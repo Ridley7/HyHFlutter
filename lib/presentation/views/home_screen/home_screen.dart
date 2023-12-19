@@ -41,10 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
           });
           break;
         case Status.ERROR:
-          LoadingView.hide();
-          ErrorView.show(context, state.exception!.toString(), (){
-            _homeViewModel.fetchMainMenu();
-          });
+            LoadingView.hide();
+            ErrorView.show(context, state.exception!.toString(), (){
+              _homeViewModel.fetchMainMenu();
+            });
           break;
       }
     });
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     imageBackground: item.imageBackground,
                     labelSection: item.labelSection,
                     callback: (){
-                      context.go(item.route);
+                      context.push(item.route);
                     },
                     width: item.allWidth ? size.width : size.width / 2,
                     leftLabel: item.positionLeftLabel,

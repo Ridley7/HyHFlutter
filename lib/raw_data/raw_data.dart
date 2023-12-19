@@ -11,7 +11,6 @@ import 'package:hiberus_university/models/program_screen/capitulo.dart';
 import 'package:hiberus_university/models/program_screen/episodio.dart';
 import 'package:hiberus_university/models/program_screen/modulo.dart';
 import 'package:hiberus_university/models/program_screen/subcapitulo.dart';
-import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
 Map<DateTime, InfoDay> events = {
   DateTime(2023, 9, 4): InfoDay(WorkdayStatus.workday, []),
   DateTime(2023, 9, 5): InfoDay(WorkdayStatus.workday, []),
@@ -174,7 +173,9 @@ List<Instructor> listaInstructores = [
 ];
 
 //Datos para la pantalla de zonas
+/*
 Map<int, Zone> zones = {
+
   0: Zone(
       id: 0,
       name: "Sala 1",
@@ -252,7 +253,9 @@ Map<int, Zone> zones = {
       tapped: false,
       selectedColor: Color.fromRGBO(50, 200, 50, 0.5),
       unselectedColor: Color.fromRGBO(50, 50, 200, 0.5)),
+
 };
+*/
 
 List<InfoGraphic> infografia = [
   InfoGraphic(

@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_map/flutter_image_map.dart';
 import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/constants/strings_app.dart';
+import 'package:hiberus_university/di/app_modules.dart';
+import 'package:hiberus_university/models/resource_state.dart';
 import 'package:hiberus_university/models/zone_screen/zone.dart';
-import 'package:hiberus_university/raw_data/raw_data.dart';
+import 'package:hiberus_university/widgets/commons/error_view.dart';
+import 'package:hiberus_university/widgets/commons/loading_view.dart';
 import 'package:hiberus_university/widgets/zones/RowDescriptionZone.dart';
+
+import 'zones_screen/viewmodel/zones_view_model.dart';
 
 class ZonesScreen extends StatefulWidget {
   const ZonesScreen({Key? key}) : super(key: key);
@@ -18,8 +23,47 @@ class ZonesScreen extends StatefulWidget {
 class ImageMapExample extends State<ZonesScreen> {
   double padding = 16.0;
   double bottomPadding = -230.0;
-
   Zone? selectedEspace;
+  Map<int, Zone> zones = {};
+
+  final ZonesViewModel _zonesViewModel = inject<ZonesViewModel>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _zonesViewModel.getZonesState.stream.listen((state) {
+      switch(state.status){
+
+        case Status.LOADING:
+          LoadingView.show(context);
+          break;
+        case Status.SUCCESS:
+          LoadingView.hide();
+          setState(() {
+            zones.clear();
+            zones.addAll(state.data!.cast<int, Zone>());
+          });
+          break;
+        case Status.ERROR:
+          LoadingView.hide();
+          ErrorView.show(context, state.exception!.toString(), (){
+            _zonesViewModel.fetchHiberusZones();
+          });
+          break;
+      }
+    });
+
+    _zonesViewModel.fetchHiberusZones();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _zonesViewModel.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
