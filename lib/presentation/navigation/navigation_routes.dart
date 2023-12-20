@@ -6,10 +6,12 @@ import 'package:hiberus_university/presentation/views/hiberus_screen/hiberus_scr
 import 'package:hiberus_university/presentation/views/home_screen/home_screen.dart';
 import 'package:hiberus_university/presentation/views/lecturers_screen/lecturers_screen.dart';
 import 'package:hiberus_university/presentation/views/schedule_screen/schedule_screen.dart';
+import 'package:hiberus_university/presentation/views/splash_screen.dart';
 import 'package:hiberus_university/presentation/views/zones_screen/zones_screen.dart';
 
 class NavigationRoutes{
   static const String INITIAL_ROUTE = "/";
+  static const String HOME_SCREEN_ROUTE = "/home";
   static const String HIBERUS_SCREEN_ROUTE = "/hiberus";
   static const String ZONES_SCREEN_ROUTE = "/zones";
   static const String LECTURES_SCREEN_ROUTE = "/lecturers";
@@ -25,6 +27,11 @@ final GoRouter router = GoRouter(
   routes: [
     GoRoute(
         path: NavigationRoutes.INITIAL_ROUTE,
+      builder: (context, state) => const SplashScreen()
+    ),
+
+    GoRoute(
+      path: NavigationRoutes.HOME_SCREEN_ROUTE,
       builder: (context, state) => const HomeScreen()
     ),
 
