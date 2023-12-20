@@ -3,7 +3,7 @@ import 'package:flutter_image_map/flutter_image_map.dart';
 import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/constants/strings_app.dart';
 import 'package:hiberus_university/di/app_modules.dart';
-import 'package:hiberus_university/models/resource_state.dart';
+import 'package:hiberus_university/presentation/model/resource_state.dart';
 import 'package:hiberus_university/models/zone_screen/zone.dart';
 import 'package:hiberus_university/widgets/commons/error_view.dart';
 import 'package:hiberus_university/widgets/commons/loading_view.dart';

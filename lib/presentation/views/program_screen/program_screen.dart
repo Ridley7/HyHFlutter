@@ -3,7 +3,7 @@ import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/constants/strings_app.dart';
 import 'package:hiberus_university/di/app_modules.dart';
 import 'package:hiberus_university/models/program_screen/modulo.dart';
-import 'package:hiberus_university/models/resource_state.dart';
+import 'package:hiberus_university/presentation/model/resource_state.dart';
 import 'package:hiberus_university/presentation/views/program_screen/viewmodel/program_view_model.dart';
 import 'package:hiberus_university/widgets/commons/error_view.dart';
 import 'package:hiberus_university/widgets/commons/loading_view.dart';

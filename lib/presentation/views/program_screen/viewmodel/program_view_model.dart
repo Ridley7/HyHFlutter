@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:hiberus_university/domain/program_repository.dart';
 import 'package:hiberus_university/models/program_screen/modulo.dart';
-import 'package:hiberus_university/models/resource_state.dart';
+import 'package:hiberus_university/presentation/model/resource_state.dart';
 import 'package:hiberus_university/presentation/base/base_view_model.dart';
 
 class ProgramViewModel extends BaseViewModel{
