@@ -6,8 +6,8 @@ import 'package:hiberus_university/di/app_modules.dart';
 import 'package:hiberus_university/models/instructors_screen/Instructor.dart';
 import 'package:hiberus_university/presentation/model/resource_state.dart';
 import 'package:hiberus_university/presentation/views/lecturers_screen/viewmodel/LecturersViewModel.dart';
-import 'package:hiberus_university/widgets/commons/error_view.dart';
-import 'package:hiberus_university/widgets/commons/loading_view.dart';
+import 'package:hiberus_university/presentation/widgets/commons/error_view.dart';
+import 'package:hiberus_university/presentation/widgets/commons/loading_view.dart';
 import 'package:hiberus_university/widgets/instructors/instructor_widget.dart';
 
 class LecturersScreen extends StatefulWidget {
