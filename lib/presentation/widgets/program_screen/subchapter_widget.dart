@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/models/program_screen/subcapitulo.dart';
-import 'package:hiberus_university/widgets/program/episode_widget.dart';
+import 'package:hiberus_university/presentation/widgets/program_screen/episode_widget.dart';
 
 class Subchapter extends StatelessWidget {
   const Subchapter({super.key, required this.subchapter});

@@ -9,7 +9,7 @@ import 'package:hiberus_university/presentation/model/resource_state.dart';
 import 'package:hiberus_university/presentation/views/home_screen/viewmodel/home_view_model.dart';
 import 'package:hiberus_university/presentation/widgets/commons/error_view.dart';
 import 'package:hiberus_university/presentation/widgets/commons/loading_view.dart';
-import 'package:hiberus_university/widgets/home_screen/menu_tile.dart';
+import 'package:hiberus_university/presentation/widgets/home_screen/menu_tile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

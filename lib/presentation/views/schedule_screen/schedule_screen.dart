@@ -10,8 +10,8 @@ import 'package:hiberus_university/models/schedule_screen/workday_status.dart';
 import 'package:hiberus_university/presentation/views/schedule_screen/viewmodel/schedule_viewmodel.dart';
 import 'package:hiberus_university/presentation/widgets/commons/error_view.dart';
 import 'package:hiberus_university/presentation/widgets/commons/loading_view.dart';
-import 'package:hiberus_university/widgets/schedule/holy_day_calendar.dart';
-import 'package:hiberus_university/widgets/schedule/work_day_calendar.dart';
+import 'package:hiberus_university/presentation/widgets/schedule_screen/holy_day_calendar.dart';
+import 'package:hiberus_university/presentation/widgets/schedule_screen/work_day_calendar.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 

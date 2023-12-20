@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hiberus_university/constants/strings_app.dart';
-import 'package:hiberus_university/widgets/hiberus/corporative_button.dart';
+import 'package:hiberus_university/presentation/widgets/hiberus_screen/corporative_button.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({

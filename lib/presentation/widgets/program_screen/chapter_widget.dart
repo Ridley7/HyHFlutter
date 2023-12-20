@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/models/program_screen/capitulo.dart';
 
-import 'package:hiberus_university/widgets/program/subchapter_widget.dart';
+import 'package:hiberus_university/presentation/widgets/program_screen/subchapter_widget.dart';
 
 class ChapterWidget extends StatelessWidget {
   const ChapterWidget({super.key, required this.chapter});

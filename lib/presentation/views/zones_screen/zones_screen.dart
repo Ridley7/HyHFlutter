@@ -7,7 +7,7 @@ import 'package:hiberus_university/presentation/model/resource_state.dart';
 import 'package:hiberus_university/models/zone_screen/zone.dart';
 import 'package:hiberus_university/presentation/widgets/commons/error_view.dart';
 import 'package:hiberus_university/presentation/widgets/commons/loading_view.dart';
-import 'package:hiberus_university/widgets/zones/RowDescriptionZone.dart';
+import 'package:hiberus_university/presentation/widgets/zones_screen/RowDescriptionZone.dart';
 
 import 'viewmodel/zones_view_model.dart';
 
