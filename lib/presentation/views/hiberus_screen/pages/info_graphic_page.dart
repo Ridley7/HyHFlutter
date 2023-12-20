@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hiberus_university/constants/constants_app.dart';
-import 'package:hiberus_university/raw_data/raw_data.dart';
+import 'package:hiberus_university/models/hiberus_screen/info_graphic.dart';
 import 'package:hiberus_university/widgets/hiberus/info_graphic_widget.dart';
 
 class InfoGraphicPage extends StatelessWidget {
@@ -10,6 +10,7 @@ class InfoGraphicPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
         color: ConstantsApp.BlueHiberusDark,
         child: Column(
@@ -24,3 +25,25 @@ class InfoGraphicPage extends StatelessWidget {
   }
 }
 
+List<InfoGraphic> infografia = [
+  InfoGraphic(
+      routeAsset: "assets/images/alumnos.png",
+      description: "Más de 1285 alumnos y alumnas en 2022"
+  ),
+
+  InfoGraphic(
+      routeAsset: "assets/images/contratacion.png",
+      description: "80% de contratación de alumnos"
+  ),
+
+  InfoGraphic(
+      routeAsset: "assets/images/formacion.png",
+      description: "Formación intensiva y especifica"
+  ),
+
+  InfoGraphic(
+      routeAsset: "assets/images/tecnologias.png",
+      description: "Tecnologías punteras en el mercado"
+  ),
+
+];
