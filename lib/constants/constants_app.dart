@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ConstantsApp {
   static const Color BlueHiberusLight = Color(0xFF89BBF1);
   static const Color BlueHiberusDark = Color(0xFF133963);
+  static const Color SplashBackground = Color(0xFF19245A);
   static const TextStyle TitleModule = TextStyle(
       fontSize: 20, color: BlueHiberusLight);
   static const TextStyle ChapterModule = TextStyle(
