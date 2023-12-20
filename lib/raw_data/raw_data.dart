@@ -1,8 +1,5 @@
 import 'dart:ui';
 
-import 'package:hiberus_university/models/schedule_screen/event.dart';
-import 'package:hiberus_university/models/schedule_screen/info_day.dart';
-import 'package:hiberus_university/models/schedule_screen/workday_status.dart';
 import 'package:hiberus_university/models/program_screen/capitulo.dart';
 import 'package:hiberus_university/models/program_screen/episodio.dart';
 import 'package:hiberus_university/models/program_screen/modulo.dart';
@@ -354,8 +351,9 @@ List<ItemMenu> menu = [
 */
 
 
-
+/*
 List<Modulo> temario = [
+
   Modulo(
       tituloModulo: "Modulo 1 - Desarrollo para la plataforma Android",
       listaCapitulo: [
@@ -643,5 +641,9 @@ List<Modulo> temario = [
       nameTechnology: "",
       imageTechnology:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Google-flutter-logo.svg/1920px-Google-flutter-logo.svg.png")
+
+
 ];
+
+ */
 

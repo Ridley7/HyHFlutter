@@ -6,4 +6,11 @@ class Capitulo {
   List<Subcapitulo>? listaSubcapitulos;
 
   Capitulo({required this.texto, required this.listaSubcapitulos});
+
+  factory Capitulo.fromJson(Map<String, dynamic> json) {
+    return Capitulo(
+      texto: json["texto"],
+      listaSubcapitulos: List<Subcapitulo>.from(json["listaSubcapitulos"].map((x) => Subcapitulo.fromJson(x))),
+    );
+  }
 }
