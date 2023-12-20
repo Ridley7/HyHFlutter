@@ -11,6 +11,7 @@ class InfoDay{
   });
 
   factory InfoDay.fromJson(Map<String, dynamic> json) {
+
     return InfoDay(
       listEvents: json["events"] == null ? [] : List<Event>.from(json["events"].map((x) => Event.fromJson(x))),
       workdayStatus: _getWorkdayValue(json["status"]),

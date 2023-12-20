@@ -5,6 +5,7 @@ import 'package:hiberus_university/constants/strings_app.dart';
 import 'package:hiberus_university/di/app_modules.dart';
 import 'package:hiberus_university/models/resource_state.dart';
 import 'package:hiberus_university/models/schedule_screen/event.dart';
+import 'package:hiberus_university/models/schedule_screen/info_day.dart';
 import 'package:hiberus_university/models/schedule_screen/workday_status.dart';
 import 'package:hiberus_university/presentation/views/schedule_screen/viewmodel/schedule_viewmodel.dart';
 import 'package:hiberus_university/raw_data/raw_data.dart';
@@ -29,6 +30,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   late final ValueNotifier<List<Event>> _selectedEvents;
 
   final ScheduleViewModel _scheduleViewModel = inject<ScheduleViewModel>();
+  Map<DateTime, InfoDay> events = {};
 
   @override
   void initState() {
@@ -44,11 +46,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         case Status.SUCCESS:
           LoadingView.hide();
           setState(() {
-            /*
-            zones.clear();
-            zones.addAll(state.data!.cast<int, Zone>());
-             */
-            print("Esperamos aqui");
+            events.addAll(state.data!.cast<DateTime, InfoDay>());
           });
           break;
         case Status.ERROR:

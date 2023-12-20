@@ -7,7 +7,10 @@ import 'package:hiberus_university/models/program_screen/capitulo.dart';
 import 'package:hiberus_university/models/program_screen/episodio.dart';
 import 'package:hiberus_university/models/program_screen/modulo.dart';
 import 'package:hiberus_university/models/program_screen/subcapitulo.dart';
+
+/*
 Map<DateTime, InfoDay> events = {
+
   DateTime(2023, 9, 4): InfoDay(workdayStatus:WorkdayStatus.workday, listEvents: []),
   DateTime(2023, 9, 5): InfoDay(workdayStatus: WorkdayStatus.workday, listEvents: []),
   DateTime(2023, 9, 6): InfoDay(workdayStatus: WorkdayStatus.workday, listEvents: []),
@@ -78,8 +81,9 @@ Map<DateTime, InfoDay> events = {
   DateTime(2023, 12, 21): InfoDay(workdayStatus: WorkdayStatus.workday, listEvents: []),
 
   DateTime(2023, 12, 25): InfoDay(workdayStatus: WorkdayStatus.holiday, listEvents: []),
-};
 
+};
+*/
 
 //Datos para la pantalla de instructores
 /*
