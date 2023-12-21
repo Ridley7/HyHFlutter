@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/models/instructors_screen/Instructor.dart';
 import 'package:hiberus_university/models/instructors_screen/tech.dart';
+import 'package:hiberus_university/presentation/constants/constants_app.dart';
 import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
 import 'package:hiberus_university/presentation/widgets/instructors_screen/icon_tech_widget.dart';
 

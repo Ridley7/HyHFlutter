@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/models/hiberus_screen/info_graphic.dart';
+import 'package:hiberus_university/presentation/constants/constants_app.dart';
 import 'package:hiberus_university/presentation/widgets/hiberus_screen/info_graphic_widget.dart';
 
 class InfoGraphicPage extends StatelessWidget {

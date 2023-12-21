@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:hiberus_university/constants/constants_app.dart';
+import 'package:hiberus_university/presentation/constants/constants_app.dart';
 
 class MenuTile extends StatelessWidget {
   const MenuTile({

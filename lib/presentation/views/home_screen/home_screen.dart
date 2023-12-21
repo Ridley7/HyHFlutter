@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hiberus_university/constants/constants_app.dart';
 import 'package:hiberus_university/di/app_modules.dart';
 import 'package:hiberus_university/models/home_screen/item_menu.dart';
+import 'package:hiberus_university/presentation/constants/constants_app.dart';
 import 'package:hiberus_university/presentation/model/resource_state.dart';
 import 'package:hiberus_university/presentation/views/home_screen/viewmodel/home_view_model.dart';
 import 'package:hiberus_university/presentation/widgets/commons/error_view.dart';

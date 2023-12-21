@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hiberus_university/constants/strings_app.dart';
+import 'package:hiberus_university/presentation/constants/strings_app.dart';
 
 class CustomFormWidget extends StatelessWidget {
   const CustomFormWidget({

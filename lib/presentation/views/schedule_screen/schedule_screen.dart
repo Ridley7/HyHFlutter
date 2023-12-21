@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hiberus_university/constants/constants_app.dart';
-import 'package:hiberus_university/constants/strings_app.dart';
 import 'package:hiberus_university/di/app_modules.dart';
+import 'package:hiberus_university/presentation/constants/constants_app.dart';
+import 'package:hiberus_university/presentation/constants/strings_app.dart';
 import 'package:hiberus_university/presentation/model/resource_state.dart';
 import 'package:hiberus_university/models/schedule_screen/event.dart';
 import 'package:hiberus_university/models/schedule_screen/info_day.dart';

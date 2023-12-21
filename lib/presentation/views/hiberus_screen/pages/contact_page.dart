@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hiberus_university/constants/constants_app.dart';
-import 'package:hiberus_university/constants/strings_app.dart';
+import 'package:hiberus_university/presentation/constants/constants_app.dart';
+import 'package:hiberus_university/presentation/constants/strings_app.dart';
 import 'package:hiberus_university/presentation/widgets/hiberus_screen/corporative_button.dart';
 import 'package:hiberus_university/presentation/widgets/hiberus_screen/custom_form_widget.dart';
 import 'package:url_launcher/url_launcher.dart';

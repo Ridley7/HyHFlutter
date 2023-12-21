@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hiberus_university/constants/constants_app.dart';
+import 'package:hiberus_university/presentation/constants/constants_app.dart';
 import 'package:hiberus_university/presentation/navigation/navigation_routes.dart';
 import 'package:lottie/lottie.dart';
 
