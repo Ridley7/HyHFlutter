@@ -21,7 +21,7 @@ class InstructorWidget extends StatelessWidget {
     return GestureDetector(
       onTap: (){
 
-        context.go(NavigationRoutes.LECTURER_DETAIL_ROUTE,
+        context.push(NavigationRoutes.LECTURER_DETAIL_ROUTE,
         extra: instructor
         );
 
