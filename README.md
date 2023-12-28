@@ -1,6 +1,5 @@
 # HyHFlutter
-El presente proyecto corresponde al trabajo final del programa de Heroes y Heroinas impartido por Hiberus.La aplicación es un simple muestrario de lo que podría ser la Hiberus University. 
-Capturas de pantalla:
+## El presente proyecto corresponde al trabajo final del programa de Heroes y Heroinas impartido por Hiberus.La aplicación es un simple muestrario de lo que podría ser la Hiberus University. Capturas de pantalla:
 
 
 <p>
