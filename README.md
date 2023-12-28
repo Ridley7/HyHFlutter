@@ -3,26 +3,26 @@
 ### Capturas de pantalla:
 - Menu Principal
   
-  <img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/menu.jpeg" alt="Texto alternativo" width="315" height="683">
+  <img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/menu.jpeg" alt="Menú Principal" width="315" height="683">
 
 - Sección Hiberus
 
-  <img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/hiberus.jpeg" alt="Texto alternativo" width="315" height="683">
+  <img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/hiberus.jpeg" alt="Sección Hiberus" width="315" height="683">
 
-- Menu Principal
+- Sección Instructores
 
-<img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/menu.jpeg" alt="Texto alternativo" width="315" height="683">
+  <img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/instructores.jpeg" alt="Instructores" width="315" height="683">
 
-- Menu Principal
+- Sección Temario
 
-<img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/menu.jpeg" alt="Texto alternativo" width="315" height="683">
+  <img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/temario.jpeg" alt="Temario" width="315" height="683">
 
-- Menu Principal
+- Sección Espacios
 
-<img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/menu.jpeg" alt="Texto alternativo" width="315" height="683">
+  <img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/zonas.jpeg" alt="Espacios o Zonas" width="315" height="683">
 
-- Menu Principal
+- Sección Calendario
 
-<img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/menu.jpeg" alt="Texto alternativo" width="315" height="683">
+  <img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/calendario.jpeg" alt="Sección calendario" width="315" height="683">
 
 
