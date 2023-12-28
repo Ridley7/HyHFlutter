@@ -7,7 +7,7 @@
 
 - Sección Hiberus
 
-<img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/hiberus.jpeg" alt="Texto alternativo" width="315" height="683">
+  <img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/hiberus.jpeg" alt="Texto alternativo" width="315" height="683">
 
 - Menu Principal
 
