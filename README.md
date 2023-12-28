@@ -3,4 +3,4 @@ El presente proyecto corresponde al trabajo final del programa de Heroes y Heroi
 Capturas de pantalla:
 
 Menu Principal
-<img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/calendario.jpeg" alt="Logo de mi proyecto" width="297" height="683">
+<img src="https://raw.githubusercontent.com/Ridley7/HyHFlutter/master/readme/menu.jpeg" alt="Logo de mi proyecto" width="297" height="683">
